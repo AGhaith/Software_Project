@@ -1,0 +1,15 @@
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\bin\Debug\net9.0\LocalBrandFinder.Application.deps.json
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\bin\Debug\net9.0\LocalBrandFinder.Application.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\bin\Debug\net9.0\LocalBrandFinder.Application.pdb
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\bin\Debug\net9.0\LocalBrandFinder.Domain.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\bin\Debug\net9.0\LocalBrandFinder.Domain.pdb
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\LocalBrandFinder.Application.csproj.AssemblyReference.cache
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\LocalBrandFinder.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\LocalBrandFinder.Application.AssemblyInfoInputs.cache
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\LocalBrandFinder.Application.AssemblyInfo.cs
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\LocalBrandFinder.Application.csproj.CoreCompileInputs.cache
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\LocalBra.91CBAC66.Up2Date
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\LocalBrandFinder.Application.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\refint\LocalBrandFinder.Application.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\LocalBrandFinder.Application.pdb
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Application\obj\Debug\net9.0\ref\LocalBrandFinder.Application.dll
