@@ -1,0 +1,321 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|solutionrelative:localbrandfinder.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|solutionrelative:localbrandfinder.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|solutionrelative:localbrandfinder.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4E10DD7-B3E4-4D3B-8E26-29022D10CEE9}|LocalBrandFinder.Infrastructure\\LocalBrandFinder.Infrastructure.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4E10DD7-B3E4-4D3B-8E26-29022D10CEE9}|LocalBrandFinder.Infrastructure\\LocalBrandFinder.Infrastructure.csproj|solutionrelative:localbrandfinder.infrastructure\\persistence\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EE73EB5-2F28-4503-89A0-5012244072F2}|LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.domain\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE73EB5-2F28-4503-89A0-5012244072F2}|LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj|solutionrelative:localbrandfinder.domain\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EE73EB5-2F28-4503-89A0-5012244072F2}|LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.domain\\models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE73EB5-2F28-4503-89A0-5012244072F2}|LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj|solutionrelative:localbrandfinder.domain\\models\\brand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EE73EB5-2F28-4503-89A0-5012244072F2}|LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.domain\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EE73EB5-2F28-4503-89A0-5012244072F2}|LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj|solutionrelative:localbrandfinder.domain\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.api\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|solutionrelative:localbrandfinder.api\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.api\\dependencyinjection\\apiservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C21A191-B603-4FC5-AFB3-BF0DCEA1CAA7}|LocalBrandFinder.API\\LocalBrandFinder.API.csproj|solutionrelative:localbrandfinder.api\\dependencyinjection\\apiservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D993A929-D86B-4CDF-974A-F4698BA60E89}|LocalBrandFinder.Application\\LocalBrandFinder.Application.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.application\\dependencyinjection\\applicationservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D993A929-D86B-4CDF-974A-F4698BA60E89}|LocalBrandFinder.Application\\LocalBrandFinder.Application.csproj|solutionrelative:localbrandfinder.application\\dependencyinjection\\applicationservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4E10DD7-B3E4-4D3B-8E26-29022D10CEE9}|LocalBrandFinder.Infrastructure\\LocalBrandFinder.Infrastructure.csproj|c:\\users\\salma\\onedrive\\desktop\\software_project\\localbrandfinder.infrastructure\\dependencyinjection\\infrastructureservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4E10DD7-B3E4-4D3B-8E26-29022D10CEE9}|LocalBrandFinder.Infrastructure\\LocalBrandFinder.Infrastructure.csproj|solutionrelative:localbrandfinder.infrastructure\\dependencyinjection\\infrastructureservicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\Domain\\Models\\Common\\BaseEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\Domain\\Models\\Common\\AuditableEntity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\Domain\\Domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\appsettings.Development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\LocalBrandFinder.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\Application\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Software Project\\LocalBrandFinder\\Infrastructure\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "RelativeToolTip": "LocalBrandFinder.Infrastructure\\Persistence\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAgwA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T14:40:58.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Brand.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Domain\\Models\\Brand.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.Domain\\Models\\Brand.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Domain\\Models\\Brand.cs",
+              "RelativeToolTip": "LocalBrandFinder.Domain\\Models\\Brand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T14:31:41.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Domain\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.Domain\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Domain\\Models\\Category.cs",
+              "RelativeToolTip": "LocalBrandFinder.Domain\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T14:31:17.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Domain\\Models\\Customer.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.Domain\\Models\\Customer.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Domain\\Models\\Customer.cs",
+              "RelativeToolTip": "LocalBrandFinder.Domain\\Models\\Customer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T14:29:42.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\Program.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\Program.cs",
+              "RelativeToolTip": "LocalBrandFinder.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T13:59:36.573Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\appsettings.json",
+              "RelativeDocumentMoniker": "LocalBrandFinder.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\appsettings.json",
+              "RelativeToolTip": "LocalBrandFinder.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-30T13:59:36.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "LocalBrandFinder.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAAADwAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T15:41:50.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApiServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\DependencyInjection\\ApiServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.API\\DependencyInjection\\ApiServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\DependencyInjection\\ApiServiceCollectionExtensions.cs",
+              "RelativeToolTip": "LocalBrandFinder.API\\DependencyInjection\\ApiServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T13:59:36.542Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApplicationServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Application\\DependencyInjection\\ApplicationServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.Application\\DependencyInjection\\ApplicationServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Application\\DependencyInjection\\ApplicationServiceCollectionExtensions.cs",
+              "RelativeToolTip": "LocalBrandFinder.Application\\DependencyInjection\\ApplicationServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T13:59:36.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CustomersController.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\Controllers\\CustomersController.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.API\\Controllers\\CustomersController.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.API\\Controllers\\CustomersController.cs",
+              "RelativeToolTip": "LocalBrandFinder.API\\Controllers\\CustomersController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAIwEQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T13:59:36.56Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "InfrastructureServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Infrastructure\\DependencyInjection\\InfrastructureServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "LocalBrandFinder.Infrastructure\\DependencyInjection\\InfrastructureServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Infrastructure\\DependencyInjection\\InfrastructureServiceCollectionExtensions.cs",
+              "RelativeToolTip": "LocalBrandFinder.Infrastructure\\DependencyInjection\\InfrastructureServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T13:59:36.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Domain.csproj",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\Domain\\Domain.csproj",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\Domain\\Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-28T17:45:44.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\appsettings.json",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-28T17:43:58.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\appsettings.Development.json",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-28T17:42:51.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\Program.cs",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:42:45.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LocalBrandFinder.csproj",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\LocalBrandFinder.csproj",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder\\LocalBrandFinder.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-28T17:42:43.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\Application\\Class1.cs",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:41:44.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\Domain\\Models\\Common\\BaseEntity.cs",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\Domain\\Models\\Common\\BaseEntity.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:41:06.923Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuditableEntity.cs",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\Domain\\Models\\Common\\AuditableEntity.cs",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\Domain\\Models\\Common\\AuditableEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:47:41.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "D:\\Software Project\\LocalBrandFinder\\Infrastructure\\Class1.cs",
+              "ToolTip": "D:\\Software Project\\LocalBrandFinder\\Infrastructure\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:40:46.951Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

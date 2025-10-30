@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Y1WlVDlCCHk=",
+  "dgSpecHash": "JgqyG8I0qNg=",
   "success": true,
-  "projectFilePath": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder.Application\\LocalBrandFinder.Application.csproj",
+  "projectFilePath": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Application\\LocalBrandFinder.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Ahmed\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.10\\microsoft.extensions.dependencyinjection.abstractions.9.0.10.nupkg.sha512"
+    "C:\\Users\\Salma\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.10\\microsoft.extensions.dependencyinjection.abstractions.9.0.10.nupkg.sha512",
+    "C:\\Users\\Salma\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.9\\microsoft.windowsdesktop.app.ref.9.0.9.nupkg.sha512",
+    "C:\\Users\\Salma\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.9\\microsoft.netcore.app.ref.9.0.9.nupkg.sha512",
+    "C:\\Users\\Salma\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.9\\microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
   ],
   "logs": []
 }
