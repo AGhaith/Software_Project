@@ -1,6 +1,20 @@
 using LocalBrandFinder.API.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .AllowAnyOrigin()    // or .WithOrigins("https://your-frontend.com")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
+
+// Add API services
 builder.Services.AddApiServices(builder.Configuration);
 
 var app = builder.Build();
@@ -29,6 +43,9 @@ app.Lifetime.ApplicationStarted.Register(() =>
         Console.ResetColor();
     }
 });
+//  Add this BEFORE app.MapControllers()
+app.UseCors("AllowAll");
 
+app.MapControllers();
 
 app.Run();
