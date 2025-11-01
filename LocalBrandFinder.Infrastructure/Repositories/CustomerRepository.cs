@@ -2,7 +2,7 @@ using LocalBrandFinder.Application.Interfaces;
 using LocalBrandFinder.Domain.Models;
 using LocalBrandFinder.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-
+ 
 namespace LocalBrandFinder.Infrastructure.Repositories;
 
 public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
