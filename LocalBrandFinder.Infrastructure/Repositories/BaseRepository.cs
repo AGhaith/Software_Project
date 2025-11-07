@@ -10,27 +10,29 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 {
     protected readonly ApplicationDbContext _dbContext;
 
+    protected readonly DbSet<T> _dbSet;
     public BaseRepository(ApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
+        _dbSet = _dbContext.Set<T>();
     }
 
-    public async Task<IReadOnlyList<T>> GetAllAsync()
+    public async Task<IList<T>> GetAllAsync()
     {
-        return await _dbContext.Set<T>().ToListAsync();
+        return await _dbSet.ToListAsync();
     }
 
-    public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate)
+    public async Task<IList<T>> GetAsync(Expression<Func<T, bool>> predicate)
     {
-        return await _dbContext.Set<T>().Where(predicate).ToListAsync();
+        return await _dbSet.Where(predicate).ToListAsync();
     }
 
-    public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>>? predicate = null,
+    public async Task<IList<T>> GetAsync(Expression<Func<T, bool>>? predicate = null,
                                                 Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
                                                 string? includeString = null,
                                                 bool disableTracking = true)
     {
-        IQueryable<T> query = _dbContext.Set<T>();
+        IQueryable<T> query = _dbSet;
 
         if (disableTracking)
             query = query.AsNoTracking();
@@ -49,13 +51,13 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public async Task<T?> GetByIdAsync(Guid id)
     {
-        return await _dbContext.Set<T>().FindAsync(id);
+        return await _dbSet.FindAsync(id);
     }
 
-    public async Task<T> AddAsync(T entity)
+    public async Task<bool> AddAsync(T entity)
     {
-        await _dbContext.Set<T>().AddAsync(entity);
-        return entity;
+        await _dbSet.AddAsync(entity);
+        return entity != null;
     }
 
     public Task UpdateAsync(T entity)
@@ -66,12 +68,17 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public Task DeleteAsync(T entity)
     {
-        _dbContext.Set<T>().Remove(entity);
+        _dbSet.Remove(entity);
         return Task.CompletedTask;
     }
 
     public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
     {
-        return await _dbContext.Set<T>().AnyAsync(predicate);
+        return await _dbSet.AnyAsync(predicate);
+    }
+
+    public async Task<T?> GetSingleAsync(Expression<Func<T, bool>> predicate)
+    {
+        return await _dbSet.FirstOrDefaultAsync(predicate);
     }
 }

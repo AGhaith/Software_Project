@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj",
+      "projectUniqueName": "D:\\Software_Project\\LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj",
       "projectName": "LocalBrandFinder.Domain",
-      "projectPath": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj",
+      "projectPath": "D:\\Software_Project\\LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj",
       "packagesPath": "C:\\Users\\Ahmed\\.nuget\\packages\\",
-      "outputPath": "D:\\Software Project\\LocalBrandFinder\\LocalBrandFinder.Domain\\obj\\",
+      "outputPath": "D:\\Software_Project\\LocalBrandFinder.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

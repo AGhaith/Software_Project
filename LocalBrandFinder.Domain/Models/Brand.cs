@@ -2,12 +2,8 @@ using LocalBrandFinder.Domain.Models.Common;
 
 namespace LocalBrandFinder.Domain.Models;
 
-public class Brand : AuditableEntity
+public class Brand : BaseUser
 {
-    public required string Name { get; set; }
-    public required string Email { get; set; }
-    public required string PasswordHash { get; set; }
-
     public string Category { get; set; } = string.Empty;
 
     public string Tags { get; set; } = string.Empty;

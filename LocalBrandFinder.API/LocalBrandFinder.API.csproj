@@ -15,6 +15,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Identity.Web" Version="4.0.1" />
     <PackageReference Include="Microsoft.Identity.Web.UI" Version="4.0.1" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.10.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
   </ItemGroup>
 
