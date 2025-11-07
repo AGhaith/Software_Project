@@ -13,17 +13,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "LocalBrandFinder.Application.DTOs.Authentication.LoginResponseDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "LocalBrandFinder.API.Controllers.AuthController",
@@ -39,17 +29,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "LocalBrandFinder.Application.DTOs.Authentication.LoginResponseDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "LocalBrandFinder.API.Controllers.AuthController",
@@ -65,17 +45,27 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "LocalBrandFinder.Application.DTOs.Authentication.LoginResponseDto",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LocalBrandFinder.API.Controllers.AuthController",
+    "Method": "TestBrandAuth",
+    "RelativePath": "api/Auth/test/brand",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LocalBrandFinder.API.Controllers.AuthController",
+    "Method": "TestCustomerAuth",
+    "RelativePath": "api/Auth/test/customer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "LocalBrandFinder.API.Controllers.CustomersController",

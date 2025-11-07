@@ -17,3 +17,23 @@ D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\n
 D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\ref\LocalBrandFinder.Infrastructure.dll
 D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.runtimeconfig.json
 D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.genruntimeconfig.cache
+D:\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.deps.json
+D:\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.runtimeconfig.json
+D:\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.dll
+D:\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.pdb
+D:\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Application.dll
+D:\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Domain.dll
+D:\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Domain.pdb
+D:\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Application.pdb
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.csproj.AssemblyReference.cache
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.AssemblyInfoInputs.cache
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.AssemblyInfo.cs
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.sourcelink.json
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBra.E9EABB06.Up2Date
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.dll
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\refint\LocalBrandFinder.Infrastructure.dll
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.pdb
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.genruntimeconfig.cache
+D:\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\ref\LocalBrandFinder.Infrastructure.dll

@@ -22,9 +22,9 @@ public class UnitOfWork : IUnitOfWork
     public IBrandRepository Brands =>
         _brandRepository ??= new BrandRepository(_context);
 
-    public async Task<int> SaveChangesAsync()
+    public async Task<bool> SaveChangesAsync()
     {
-        return await _context.SaveChangesAsync();
+        return await _context.SaveChangesAsync() != 0;
     }
 
     public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default)

@@ -5,6 +5,6 @@ public interface IUnitOfWork : IDisposable
     ICustomerRepository Customers { get; }
     IBrandRepository Brands { get; }
 
-    Task<int> SaveChangesAsync();
+    Task<bool> SaveChangesAsync();
     Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default);
 }

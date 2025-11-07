@@ -1,8 +1,12 @@
 using LocalBrandFinder.Application.DependencyInjection;
+using LocalBrandFinder.Application.Utilities;
+using LocalBrandFinder.Domain.Models.Common;
 using LocalBrandFinder.Infrastructure.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using Scalar.AspNetCore;
+using System.Text;
 
 namespace LocalBrandFinder.API.DependencyInjection;
 
@@ -12,25 +16,41 @@ public static class ApiServiceCollectionExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Add services from other layers
         services.AddApplicationServices();
         services.AddInfrastructureServices(configuration);
 
-        // Add controllers
         services.AddControllers();
         services.AddEndpointsApiExplorer();
+        services.AddOpenApi();
 
-        // Configure Swagger without authentication
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new OpenApiInfo
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
             {
-                Title = "LocalBrandFinder API",
-                Version = "v1",
-                Description = "API for Local Brand Finder application"
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = configuration["AppSettings:Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = configuration["AppSettings:Audience"],
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(configuration["AppSettings:Token"]!)
+                    )
+                };
             });
-        });
+
+        services.AddAuthorization();
 
         return services;
+    }
+
+    public static void UseApiDocumentation(this WebApplication app)
+    {
+        if (app.Environment.IsDevelopment())
+        {
+            app.MapOpenApi();
+            app.MapScalarApiReference();
+        }
     }
 }

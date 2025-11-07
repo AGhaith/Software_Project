@@ -9,3 +9,15 @@ D:\Software Project\LocalBrandFinder\LocalBrandFinder.Domain\obj\Debug\net9.0\Lo
 D:\Software Project\LocalBrandFinder\LocalBrandFinder.Domain\obj\Debug\net9.0\refint\LocalBrandFinder.Domain.dll
 D:\Software Project\LocalBrandFinder\LocalBrandFinder.Domain\obj\Debug\net9.0\LocalBrandFinder.Domain.pdb
 D:\Software Project\LocalBrandFinder\LocalBrandFinder.Domain\obj\Debug\net9.0\ref\LocalBrandFinder.Domain.dll
+D:\Software_Project\LocalBrandFinder.Domain\bin\Debug\net9.0\LocalBrandFinder.Domain.deps.json
+D:\Software_Project\LocalBrandFinder.Domain\bin\Debug\net9.0\LocalBrandFinder.Domain.dll
+D:\Software_Project\LocalBrandFinder.Domain\bin\Debug\net9.0\LocalBrandFinder.Domain.pdb
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\LocalBrandFinder.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\LocalBrandFinder.Domain.AssemblyInfoInputs.cache
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\LocalBrandFinder.Domain.AssemblyInfo.cs
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\LocalBrandFinder.Domain.csproj.CoreCompileInputs.cache
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\LocalBrandFinder.Domain.sourcelink.json
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\LocalBrandFinder.Domain.dll
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\refint\LocalBrandFinder.Domain.dll
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\LocalBrandFinder.Domain.pdb
+D:\Software_Project\LocalBrandFinder.Domain\obj\Debug\net9.0\ref\LocalBrandFinder.Domain.dll
