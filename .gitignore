@@ -2,6 +2,8 @@
 .vs/
 .vs/LocalBrandFinder/
 LocalBrandFinder.API/bin
+LocalBrandFinder.API/obj
+
 LocalBrandFinder.Application/obj
 *.suo
 *.user
@@ -52,3 +54,20 @@ project.lock.json
 
 # Others
 *.vsix
+
+# Visual Studio
+.vs/
+.vs/LocalBrandFinder/
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
