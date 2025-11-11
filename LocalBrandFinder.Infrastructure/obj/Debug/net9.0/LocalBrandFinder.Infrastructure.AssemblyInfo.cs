@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LocalBrandFinder.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c9a5dbe94074eb36d1fcf4c060c29c853c9750f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26139260d0c7b0b926c644a44c9478fa01075a93")]
 [assembly: System.Reflection.AssemblyProductAttribute("LocalBrandFinder.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LocalBrandFinder.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

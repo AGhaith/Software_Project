@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7WKeAsEWDOM=",
+  "dgSpecHash": "zMKshBrzsD4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Salma\\OneDrive\\Desktop\\Software_Project\\LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Salma\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.9\\microsoft.windowsdesktop.app.ref.9.0.9.nupkg.sha512",
-    "C:\\Users\\Salma\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.9\\microsoft.netcore.app.ref.9.0.9.nupkg.sha512",
-    "C:\\Users\\Salma\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.9\\microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Ahmed\\Desktop\\sft\\Software_Project\\LocalBrandFinder.Domain\\LocalBrandFinder.Domain.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
