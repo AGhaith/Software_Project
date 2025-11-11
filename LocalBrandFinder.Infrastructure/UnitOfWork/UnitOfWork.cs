@@ -9,6 +9,8 @@ public class UnitOfWork : IUnitOfWork
     private readonly ApplicationDbContext _context;
     private ICustomerRepository? _customerRepository;
     private IBrandRepository? _brandRepository;
+    private ICategoryRepository? _categoryRepository;
+
     private bool _disposed;
 
     public UnitOfWork(ApplicationDbContext context)
@@ -21,6 +23,8 @@ public class UnitOfWork : IUnitOfWork
 
     public IBrandRepository Brands =>
         _brandRepository ??= new BrandRepository(_context);
+    public ICategoryRepository Categories =>
+        _categoryRepository ??= new CategoryRepository(_context);
 
     public async Task<bool> SaveChangesAsync()
     {

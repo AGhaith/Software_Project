@@ -24,7 +24,6 @@ public class AuthController(
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequestDto loginDto)
     {
-        // Try customer login
         var customer = await _unitOfWork.Customers.GetSingleAsync(c => c.Email == loginDto.Email);
 
         if (customer != null && _passwordUtility.VerifyPassword(loginDto.Password, customer.PasswordHash))
@@ -33,7 +32,6 @@ public class AuthController(
             return Ok(new { Token = token, Role = "Customer" });
         }
 
-        // Try brand login
         var brand = await _unitOfWork.Brands.GetSingleAsync(b => b.Email == loginDto.Email);
 
         if (brand != null && _passwordUtility.VerifyPassword(loginDto.Password, brand.PasswordHash))

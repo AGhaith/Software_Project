@@ -4,8 +4,7 @@ namespace LocalBrandFinder.Domain.Models;
 
 public class Brand : BaseUser
 {
-    public string Category { get; set; } = string.Empty;
-
+    public ICollection<Category> Categories { get; set; } = new List<Category>();
     public string Tags { get; set; } = string.Empty;
 
     public string WebsiteUrl { get; set; } = string.Empty;
