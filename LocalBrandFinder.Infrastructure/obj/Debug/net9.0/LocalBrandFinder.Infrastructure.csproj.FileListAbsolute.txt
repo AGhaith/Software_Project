@@ -1,0 +1,59 @@
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.deps.json
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.pdb
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Application.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Domain.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Domain.pdb
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Application.pdb
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.csproj.AssemblyReference.cache
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.AssemblyInfoInputs.cache
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.AssemblyInfo.cs
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBra.E9EABB06.Up2Date
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\refint\LocalBrandFinder.Infrastructure.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.pdb
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\ref\LocalBrandFinder.Infrastructure.dll
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.runtimeconfig.json
+D:\Software Project\LocalBrandFinder\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.genruntimeconfig.cache
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.deps.json
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.runtimeconfig.json
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.dll
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.pdb
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Application.dll
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Domain.dll
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Domain.pdb
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Application.pdb
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.AssemblyInfo.cs
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.sourcelink.json
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBra.E9EABB06.Up2Date
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.dll
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\refint\LocalBrandFinder.Infrastructure.dll
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.pdb
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.genruntimeconfig.cache
+C:\Users\Salma\OneDrive\Desktop\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\ref\LocalBrandFinder.Infrastructure.dll
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.deps.json
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.runtimeconfig.json
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.dll
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Infrastructure.pdb
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Application.dll
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Domain.dll
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Domain.pdb
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\bin\Debug\net9.0\LocalBrandFinder.Application.pdb
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.AssemblyInfo.cs
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.sourcelink.json
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBra.E9EABB06.Up2Date
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.dll
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\refint\LocalBrandFinder.Infrastructure.dll
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.pdb
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\LocalBrandFinder.Infrastructure.genruntimeconfig.cache
+C:\Users\Ahmed\Desktop\sft\Software_Project\LocalBrandFinder.Infrastructure\obj\Debug\net9.0\ref\LocalBrandFinder.Infrastructure.dll
