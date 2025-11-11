@@ -1,5 +1,7 @@
 # Visual Studio
 .vs/
+.vs/LocalBrandFinder/
+
 *.suo
 *.user
 *.userosscache
