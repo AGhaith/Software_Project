@@ -1,9 +1,13 @@
+using FluentValidation;
+using FluentValidation.Results;
 using LocalBrandFinder.Application.DTOs.Authentication;
 using LocalBrandFinder.Application.Interfaces;
 using LocalBrandFinder.Application.Utilities;
 using LocalBrandFinder.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LocalBrandFinder.API.Controllers;
 
@@ -12,7 +16,9 @@ namespace LocalBrandFinder.API.Controllers;
 public class AuthController(
     IUnitOfWork _unitOfWork,
     PasswordUtility _passwordUtility,
-    AuthUtility _authUtility
+    AuthUtility _authUtility,
+    IValidator<CustomerSignUpDto> _customerValidator,
+    IValidator<BrandSignUpDto> _brandValidator
 ) : ControllerBase
 {
     [HttpPost("login")]
@@ -42,9 +48,9 @@ public class AuthController(
     [HttpPost("customer/register")]
     public async Task<IActionResult> RegisterCustomer(CustomerSignUpDto registerDto)
     {
-        var existingCustomer = await _unitOfWork.Customers.GetSingleAsync(c => c.Email == registerDto.Email);
-        if (existingCustomer != null)
-            return BadRequest("Email already registered");
+        ValidationResult validation = await _customerValidator.ValidateAsync(registerDto);
+        if (!validation.IsValid)
+            return BadRequest(validation.Errors.Select(e => e.ErrorMessage));
 
         var customer = new Customer
         {
@@ -55,10 +61,10 @@ public class AuthController(
             Address = registerDto.Address ?? string.Empty
         };
 
-        bool r1 = await _unitOfWork.Customers.AddAsync(customer);
-        bool r2 = await _unitOfWork.SaveChangesAsync();
+        bool added = await _unitOfWork.Customers.AddAsync(customer);
+        bool saved = await _unitOfWork.SaveChangesAsync();
 
-        if (r1 && r2)
+        if (added && saved)
         {
             var token = _authUtility.CreateToken(customer);
             return Ok(new
@@ -68,15 +74,15 @@ public class AuthController(
             });
         }
 
-        return Unauthorized("Failed to register.");
+        return StatusCode(500, "Failed to register customer.");
     }
 
     [HttpPost("brand/register")]
     public async Task<IActionResult> RegisterBrand(BrandSignUpDto registerDto)
     {
-        var existingBrand = await _unitOfWork.Brands.GetSingleAsync(b => b.Email == registerDto.Email);
-        if (existingBrand != null)
-            return BadRequest("Email already registered");
+        ValidationResult validation = await _brandValidator.ValidateAsync(registerDto);
+        if (!validation.IsValid)
+            return BadRequest(validation.Errors.Select(e => e.ErrorMessage));
 
         var brand = new Brand
         {
@@ -89,10 +95,10 @@ public class AuthController(
             LogoUrl = registerDto.LogoUrl ?? string.Empty
         };
 
-        bool r1 = await _unitOfWork.Brands.AddAsync(brand);
-        bool r2 = await _unitOfWork.SaveChangesAsync();
+        bool added = await _unitOfWork.Brands.AddAsync(brand);
+        bool saved = await _unitOfWork.SaveChangesAsync();
 
-        if (r1 && r2)
+        if (added && saved)
         {
             var token = _authUtility.CreateToken(brand);
             return Ok(new
@@ -102,8 +108,9 @@ public class AuthController(
             });
         }
 
-        return Unauthorized("Failed to register.");
+        return StatusCode(500, "Failed to register brand.");
     }
+
     [HttpGet("test/customer")]
     [Authorize(Roles = "Customer")]
     public IActionResult TestCustomerAuth()
@@ -128,4 +135,3 @@ public class AuthController(
         });
     }
 }
-

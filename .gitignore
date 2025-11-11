@@ -1,0 +1,51 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# DotNet
+*.dbmdl
+*.dbproj.schemaview
+
+# Resharper
+_ReSharper*/
+
+# NCrunch
+*.ncrunch*
+
+# DotCover
+*.dotCover
+
+# Test results
+TestResults/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+*.dll
+*.exe
+*.pdb
+
+# Logs
+*.log
+
+# Others
+*.vsix
