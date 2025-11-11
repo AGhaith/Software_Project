@@ -1,7 +1,8 @@
 # Visual Studio
 .vs/
 .vs/LocalBrandFinder/
-
+LocalBrandFinder.API/bin
+LocalBrandFinder.Application/obj
 *.suo
 *.user
 *.userosscache

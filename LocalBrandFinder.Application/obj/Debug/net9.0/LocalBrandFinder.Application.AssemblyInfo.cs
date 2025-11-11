@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LocalBrandFinder.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51cfae1f26b0dced6bb0cdd2a1d2e7fdf9097cf2")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+26139260d0c7b0b926c644a44c9478fa01075a93")]
+>>>>>>> bf76baf7086cfd817ef795f60c41baf0fb2c8695
 [assembly: System.Reflection.AssemblyProductAttribute("LocalBrandFinder.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LocalBrandFinder.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
