@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 export default function App() {
   useEffect(() => {
-    document.title = "LocalBrands - Discover Local Businesses";
+    document.title = "Local Brands";
   }, []);
 
   return <Home />;
