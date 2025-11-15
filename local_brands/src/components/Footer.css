@@ -1,0 +1,27 @@
+.footer {
+  background-color: #111827;
+  padding: 2rem 0;
+  color: white;
+  margin-top: 2.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.footer-subtitle {
+  margin-top: 0.5rem;
+  color: #9ca3af;
+}
