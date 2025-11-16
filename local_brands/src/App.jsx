@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./index.css";
 
-// Import components directly instead of Home
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Categories from "./components/CategoryList";
