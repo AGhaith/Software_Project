@@ -1,0 +1,20 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk:9.0 AS development
+WORKDIR /src
+
+# Copy everything necessary to resolve projects
+# This copies all the code and the .sln file, preserving the folder structure.
+COPY . .
+
+# Run restore on the solution file
+RUN dotnet restore LocalBrandFinder.sln
+
+# Set the working directory to the API project folder
+WORKDIR /src/LocalBrandFinder.API
+
+EXPOSE 5033
+
+# Environment variables
+ENV ASPNETCORE_URLS=http://+:5033
+
+# The command to run the API project using 'dotnet run'
+CMD ["dotnet", "run", "--urls", "http://0.0.0.0:5033"]
