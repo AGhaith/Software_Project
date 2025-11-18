@@ -79,6 +79,33 @@ public class BrandController : ControllerBase
 
         return Ok(brands);
     }
+    [HttpGet("search/{brandName}")]
+    public async Task<IActionResult> SearchBrand(string brandName)
+    {
+        if (string.IsNullOrWhiteSpace(brandName))
+            return BadRequest("Brand name is required.");
+
+        // Case-insensitive search
+        var brands = await _unitOfWork.Brands.GetAsync(
+            b => b.Name.ToLower().Contains(brandName.ToLower())
+        );
+
+        if (brands == null || !brands.Any())
+            return NotFound($"No brands found matching '{brandName}'.");
+
+        var result = brands.Select(b => new
+        {
+            b.Id,
+            b.Name,
+            b.Categories,
+            b.LogoUrl,
+            b.WebsiteUrl,
+            b.Description,
+        });
+
+        return Ok(result);
+    }
+
 
 
 }
