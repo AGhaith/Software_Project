@@ -1,0 +1,263 @@
+.features-card {
+  margin-top: 100px;
+  width: 100%;
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 150px;
+  background: #fcfcfc;
+  border-radius: 15px;
+  box-shadow: 0px 4px 20.9px 1px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.features-card.animate-delay {
+  --animation-delay: 1400ms;
+}
+
+.features-content {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 32px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+  flex: 1;
+}
+
+.feature-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.feature-icon-container {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.feature-icon-container.orange {
+  background: rgba(255, 133, 0, 0.3);
+}
+
+.feature-icon-container.teal {
+  background: rgba(0, 174, 142, 0.3);
+}
+
+.feature-icon-container.purple {
+  background: rgba(160, 108, 213, 0.3);
+}
+
+.feature-icon {
+  height: 48px;
+  width: 48px;
+}
+
+.feature-line {
+  width: calc(100% - 64px);
+  height: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.feature-line.orange {
+  background: #ff8500;
+}
+
+.feature-line.teal {
+  background: #00ae8e;
+}
+
+.feature-line.purple {
+  background: #a06cd5;
+}
+
+.feature-title {
+  font-family: 'Inria Sans', Helvetica;
+  font-weight: 700;
+  color: black;
+  font-size: 30px;
+  text-align: left;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.feature-description {
+  font-family: 'Inria Sans', Helvetica;
+  font-weight: 700;
+  color: #6e6e6e;
+  font-size: 24px;
+  text-align: left;
+  margin: 0;
+}
+
+.trending-section {
+  position: relative;
+  margin-top: 60px;
+}
+
+.trending-title {
+  text-align: center;
+  width: 100%;
+  font-family: 'Inria Sans', Helvetica;
+  font-weight: 400;
+  color: #1a1a1a;
+  font-size: 68px;
+  white-space: nowrap;
+  transform: translateY(-1rem);
+}
+
+.trending-title.animate-delay {
+  --animation-delay: 200ms;
+}
+
+.products-grid {
+  margin-top: 60px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 0 38px;
+}
+
+.product-card {
+  width: 325px;
+  height: 417px;
+  background: #f0f0f0;
+  border-radius: 35px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  position: relative;
+  transform: translateY(-1rem);
+}
+
+.product-card:hover {
+  transform: scale(1.05) translateY(-1rem);
+}
+
+.product-image-container {
+  position: absolute;
+  top: 0;
+  left: -3px;
+  width: 328px;
+  height: 324px;
+  overflow: hidden;
+}
+
+.product-image {
+  position: absolute;
+  object-fit: cover;
+}
+
+.product-image.scarf {
+  top: -1px;
+  left: 0;
+  width: 328px;
+  height: 328px;
+}
+
+.product-image.ceramics {
+  top: -144px;
+  left: 0;
+  width: 337px;
+  height: 625px;
+}
+
+.product-image.honey {
+  top: -120px;
+  left: -17px;
+  width: 354px;
+  height: 472px;
+}
+
+.product-image.bread {
+  top: -8px;
+  left: 4px;
+  width: 328px;
+  height: 328px;
+}
+
+.product-price {
+  position: absolute;
+  top: 280px;
+  left: 233px;
+  font-family: 'Inter', Helvetica;
+  font-weight: 700;
+  color: #fffcfc;
+  font-size: 18px;
+  text-align: center;
+  background: rgba(156, 147, 147, 0.95);
+  padding: 4px 10px;
+  border-radius: 24px;
+}
+
+.product-rating-container {
+  position: absolute;
+  top: 330px;
+  left: 26px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-stars {
+  width: 99px;
+  height: 15px;
+}
+
+.product-rating {
+  font-family: 'Inter', Helvetica;
+  font-weight: 700;
+  color: #ff8500;
+  font-size: 14px;
+}
+
+.product-name {
+  position: absolute;
+  top: 351px;
+  left: 26px;
+  font-family: 'Inter', Helvetica;
+  font-weight: 700;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.product-seller {
+  position: absolute;
+  top: 378px;
+  left: 26px;
+  font-family: 'Inter', Helvetica;
+  font-weight: 700;
+  color: #6e6e6e;
+  font-size: 14px;
+  text-align: center;
+}

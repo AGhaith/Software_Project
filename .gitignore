@@ -1,0 +1,95 @@
+# Visual Studio
+.vs/
+.vs/LocalBrandFinder/
+LocalBrandFinder.API/bin
+LocalBrandFinder.API/obj
+
+LocalBrandFinder.Application/obj
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.VC.db
+*.VC.VC.opendb
+
+# Build results
+bin/
+obj/
+Debug/
+Release/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# DotNet
+*.dbmdl
+*.dbproj.schemaview
+
+# Resharper
+_ReSharper*/
+
+# NCrunch
+*.ncrunch*
+
+# DotCover
+*.dotCover
+
+# Test results
+TestResults/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+*.dll
+*.exe
+*.pdb
+
+# Logs
+*.log
+
+# Others
+*.vsix
+
+# Visual Studio
+.vs/
+.vs/LocalBrandFinder/
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
