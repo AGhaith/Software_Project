@@ -105,7 +105,17 @@ public class BrandController : ControllerBase
 
         return Ok(result);
     }
+    [HttpGet("get-all-brands")]
+    public async Task<IActionResult> GetAllBrands()//ashan ana msh bakhod haga fa hasebo fady el user hwa el byakhod
+    {
+        var Brands = await _unitOfWork.Brands.GetAllAsync();
+        if (Brands == null)
+        {
+            return NotFound();
+        }
+        return Ok(Brands);
 
+    }
 
 
 }
