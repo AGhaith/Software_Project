@@ -1,0 +1,261 @@
+.register-brand-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: #f5f7fa;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    position: relative;
+  }
+
+  .register-brand-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(135deg, #ff8500 0%, #ff9d33 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    z-index: 0;
+  }
+  
+  .register-brand-wrapper {
+    width: 50%;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .register-brand-logo {
+    font-size: 28px;
+    font-weight: 400;
+    color: #ff8500;
+    margin-bottom: 25px;
+    text-align: left;
+    font-family: 'Chewy', Helvetica;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+  }
+
+  .register-brand-logo:hover {
+    opacity: 0.8;
+  }
+  
+  .register-brand-card {
+    background: white;
+    border-radius: 20px;
+    padding: 50px 45px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #ff8500;
+  }
+  
+  .register-brand-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ff8500;
+    text-align: center;
+    margin-bottom: 35px;
+    letter-spacing: -0.5px;
+  }
+  
+  .register-brand-error {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid #c62828;
+  }
+  
+  .error-message {
+    color: #c62828;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 500;
+  }
+  
+  .register-brand-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .register-brand-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .register-brand-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .required {
+    color: #ff8500;
+    margin-left: 2px;
+  }
+  
+  .register-brand-form-group input,
+  .register-brand-form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+  
+  .register-brand-form-group input:focus,
+  .register-brand-form-group textarea:focus {
+    outline: none;
+    border-color: #ff8500;
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(255, 133, 0, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  .register-brand-form-group input.error,
+  .register-brand-form-group textarea.error {
+    border-color: #c62828;
+    background-color: #ffebee;
+  }
+  
+  .register-brand-form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .register-brand-button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #ff8500 0%, #ff9d33 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(255, 133, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .register-brand-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .register-brand-button:hover:not(:disabled)::before {
+    left: 100%;
+  }
+  
+  .register-brand-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 133, 0, 0.4);
+    background: linear-gradient(135deg, #ff9d33 0%, #ff8500 100%);
+  }
+  
+  .register-brand-button:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  .register-brand-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .register-brand-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .register-brand-footer a {
+    color: #ff8500;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .register-brand-footer a:hover {
+    text-decoration: underline;
+    color: #ff9d33;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .register-brand-wrapper {
+      width: 60%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .register-brand-wrapper {
+      width: 80%;
+    }
+
+    .register-brand-card {
+      padding: 40px 30px;
+      border-radius: 20px;
+    }
+  
+    .register-brand-title {
+      font-size: 26px;
+    }
+  
+    .register-brand-form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  
+    .register-brand-logo {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .register-brand-wrapper {
+      width: 95%;
+    }
+
+    .register-brand-card {
+      padding: 30px 20px;
+    }
+  
+    .register-brand-title {
+      font-size: 22px;
+    }
+  
+    .register-brand-logo {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .register-brand-container {
+      padding: 20px 15px;
+    }
+  }
