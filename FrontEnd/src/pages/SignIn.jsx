@@ -1,101 +1,161 @@
-import '../components/Auth.css';  
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./SignIn.css";
 
-export default function SignIn() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+export const SignIn = () => {
   const navigate = useNavigate();
 
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
+
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-
-    // Simulate API call
+  const handleSubmit = async () => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Basic validation
-      if (!formData.email || !formData.password) {
-        throw new Error('Please fill in all fields');
+      setLoading(true);
+
+      const response = await fetch("http://localhost:5033/api/Auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        alert("Invalid email or password");
+        setLoading(false);
+        return;
       }
 
-      // Simulate successful login
-      console.log('Sign in attempt:', formData);
-      
-      // Redirect to home page after successful login
-      navigate('/');
-    } catch (err) {
-      setError(err.message);
+      const data = await response.json();
+
+      // Save token
+      localStorage.setItem("authToken", data.token);
+
+      // Redirect
+      navigate("/");
+
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Something went wrong.");
     } finally {
       setLoading(false);
     }
   };
 
+  const handleSocialLogin = (provider) => {
+    console.log(`Login with ${provider}`);
+  };
+
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-header">
-          <div className="auth-logo">LocalBrands</div>
-          <h2 className="auth-title">Welcome Back</h2>
-          <p className="auth-subtitle">Sign in to your account</p>
+    <div className="signin-container">
+      <div className="signin-card">
+        <div className="signin-logo">Localo</div>
+
+        <h1 className="signin-title">Sign In</h1>
+
+        {/* Email */}
+        <div className="form-group">
+          <label className="form-label">
+            Email<span className="required-star">*</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Example@gmail.com"
+            value={formData.email}
+            onChange={handleChange}
+            className="form-input"
+          />
         </div>
 
-        {error && <div className="auth-error">{error}</div>}
+        {/* Password */}
+        <div className="form-group">
+          <label className="form-label">
+            Password<span className="required-star">*</span>
+          </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Your Password"
+            value={formData.password}
+            onChange={handleChange}
+            className="form-input"
+          />
+        </div>
 
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label className="form-label">Email Address</label>
+        {/* Options */}
+        <div className="form-options">
+          <label className="checkbox-label">
             <input
-              type="email"
-              name="email"
-              className="form-input"
-              placeholder="Enter your email"
-              value={formData.email}
+              type="checkbox"
+              name="rememberMe"
+              checked={formData.rememberMe}
               onChange={handleChange}
-              required
+              className="checkbox-input"
             />
+            Remember Me
+          </label>
+
+          <Link to="/forgot-password" className="forgot-password-link">
+            Forgot Password?
+          </Link>
+        </div>
+
+        {/* Button */}
+        <button
+          onClick={handleSubmit}
+          className="submit-button"
+          disabled={loading}
+        >
+          {loading ? "Loading..." : "Next"}
+        </button>
+
+        {/* Social Login */}
+        <div className="social-login-section">
+          <p className="social-login-text">Other Sign In Options</p>
+          <div className="social-buttons">
+            <button
+              onClick={() => handleSocialLogin("Google")}
+              className="social-button google-button"
+            >
+              Google
+            </button>
+
+            <button
+              onClick={() => handleSocialLogin("Facebook")}
+              className="social-button facebook-button"
+            >
+              Facebook
+            </button>
+
+            <button
+              onClick={() => handleSocialLogin("Apple")}
+              className="social-button apple-button"
+            >
+              Apple
+            </button>
           </div>
+        </div>
 
-          <div className="form-group">
-            <label className="form-label">Password</label>
-            <input
-              type="password"
-              name="password"
-              className="form-input"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <button 
-            type="submit" 
-            className="auth-button"
-            disabled={loading}
-          >
-            {loading ? 'Signing In...' : 'Sign In'}
-          </button>
-        </form>
-
-        <div className="auth-switch">
-          Don't have an account? 
-          <Link to="/signup" className="auth-link">Sign up</Link>
+        {/* Sign Up */}
+        <div className="signup-link">
+          Don’t have an account?{" "}
+          <Link to="/signup" className="signup-link-text">
+            Sign Up
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};

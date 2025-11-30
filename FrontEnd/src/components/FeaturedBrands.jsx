@@ -1,31 +1,129 @@
-import './FeaturedBrands.css';
+import React from "react";
+import "./FeaturedBrands.css";
 
-const brands = [
-  { id: 1, name: "Urban Coffee", desc: "Fresh local brews daily", img: "https://via.placeholder.com/200" },
-  { id: 2, name: "Crafty Hands", desc: "Handmade artisan products", img: "https://via.placeholder.com/200" },
-  { id: 3, name: "TechHive", desc: "Local tech accessories", img: "https://via.placeholder.com/200" },
-  { id: 4, name: "Green Grocer", desc: "Organic local produce", img: "https://via.placeholder.com/200" },
-  { id: 5, name: "Fashion Hub", desc: "Stylish local clothing", img: "https://via.placeholder.com/200" },
+const features = [
+  {
+    icon: "https://c.animaapp.com/mijkxqh6XSKe3B/img/frame.svg",
+    title: "Free Shipping",
+    description: "Lorem some jnosw",
+    colorClass: "orange",
+  },
+  {
+    icon: "https://c.animaapp.com/mijkxqh6XSKe3B/img/frame-10.svg",
+    title: "Free Shipping",
+    description: "Lorem some jnosw",
+    colorClass: "teal",
+  },
+  {
+    icon: "https://c.animaapp.com/mijkxqh6XSKe3B/img/frame-8.svg",
+    title: "Free Shipping",
+    description: "Lorem some jnosw",
+    colorClass: "purple",
+  },
 ];
 
-export default function FeaturedBrands() {
+const products = [
+  {
+    name: "Hand-Knitted Wool Scarf",
+    seller: "by Sarah's Crafts",
+    price: "$45.00",
+    rating: "4.7",
+    image: "https://c.animaapp.com/mijkxqh6XSKe3B/img/image-13.png",
+    imageClass: "scarf",
+    stars: "https://c.animaapp.com/mijkxqh6XSKe3B/img/group-4.png",
+  },
+  {
+    name: "Hand-painted ceramics",
+    seller: "by Sarah's Crafts",
+    price: "$45.00",
+    rating: "4.7",
+    image: "https://c.animaapp.com/mijkxqh6XSKe3B/img/image-17.png",
+    imageClass: "ceramics",
+    stars: "https://c.animaapp.com/mijkxqh6XSKe3B/img/group-4-1.png",
+  },
+  {
+    name: "Organic honey jars",
+    seller: "by Sarah's Crafts",
+    price: "$45.00",
+    rating: "4.7",
+    image: "https://c.animaapp.com/mijkxqh6XSKe3B/img/image-18.png",
+    imageClass: "honey",
+    stars: "https://c.animaapp.com/mijkxqh6XSKe3B/img/group-4-2.png",
+  },
+  {
+    name: "Artisan sourdough bread",
+    seller: "by Sarah's Crafts",
+    price: "$45.00",
+    rating: "4.7",
+    image: "https://c.animaapp.com/mijkxqh6XSKe3B/img/image-19.png",
+    imageClass: "bread",
+    stars: "https://c.animaapp.com/mijkxqh6XSKe3B/img/group-4-3.png",
+  },
+];
+
+export const FeaturedBrands = () => {
   return (
-    <section className="featured-brands">
-      <div className="featured-brands-container">
-        <h2 className="featured-brands-title">Featured Brands</h2>
-        <div className="featured-brands-grid">
-          {brands.map((b) => (
-            <div key={b.id} className="featured-brand-card">
-              <img src={b.img} alt={b.name} className="featured-brand-image" />
-              <h3 className="featured-brand-name">{b.name}</h3>
-              <p className="featured-brand-desc">{b.desc}</p>
-              <button className="featured-brand-button">
-                View More
-              </button>
+    <>
+      <div className="features-card animate-fade-in animate-delay">
+        <div className="features-content">
+          {features.map((feature, index) => (
+            <div key={index} className="feature-item">
+              <div className="feature-content-wrapper">
+                <div className={`feature-icon-container ${feature.colorClass}`}>
+                  <img
+                    className="feature-icon"
+                    alt="Feature icon"
+                    src={feature.icon}
+                  />
+                </div>
+                <div className="feature-text">
+                  <h3 className="feature-title">{feature.title}</h3>
+                  <p className="feature-description">{feature.description}</p>
+                </div>
+              </div>
+              <div className={`feature-line ${feature.colorClass}`} />
             </div>
           ))}
         </div>
       </div>
-    </section>
+
+      <section className="trending-section">
+        <h2 className="trending-title animate-fade-in animate-delay">
+          Trending Near You
+        </h2>
+
+        <div className="products-grid">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="product-card animate-fade-in"
+              style={{ "--animation-delay": `${400 + index * 100}ms` }}
+            >
+              <div className="product-image-container">
+                <img
+                  className={`product-image ${product.imageClass}`}
+                  alt={product.name}
+                  src={product.image}
+                />
+                <div className="product-price">{product.price}</div>
+              </div>
+
+              <div className="product-rating-container">
+                <img
+                  className="product-stars"
+                  alt="Rating stars"
+                  src={product.stars}
+                />
+                <div className="product-rating">{product.rating}</div>
+              </div>
+
+              <h3 className="product-name">{product.name}</h3>
+
+              <p className="product-seller">{product.seller}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
-}
+};

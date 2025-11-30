@@ -1,159 +1,210 @@
-import '../components/Auth.css';  
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./SignUp.css";
 
-
-export default function SignUp() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const [loading, setLoading] = useState(false);
+export const SignUp = () => {
   const navigate = useNavigate();
 
+  const [formData, setFormData] = useState({
+    name: "",
+    address: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-    setSuccess('');
+    setError("");
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Validation
-      if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
-        throw new Error('Please fill in all fields');
+      setIsLoading(true);
+
+      const response = await axios.post(
+        "http://localhost:5033/api/Auth/customer/register",
+        {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+          phoneNumber: formData.phoneNumber,
+          address: formData.address
+        }
+      );
+
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
       }
 
-      if (formData.password !== formData.confirmPassword) {
-        throw new Error('Passwords do not match');
-      }
-
-      if (formData.password.length < 6) {
-        throw new Error('Password must be at least 6 characters');
-      }
-
-      // Simulate successful registration
-      console.log('Sign up attempt:', formData);
-      
-      setSuccess('Account created successfully! Redirecting...');
-      
-      // Redirect after delay
-      setTimeout(() => {
-        navigate('/signin');
-      }, 2000);
-
+      alert("Registration successful! Please login.");
+      navigate("/");
     } catch (err) {
-      setError(err.message);
+      setError(err.response?.data || "Registration failed. Please try again.");
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-header">
-          <div className="auth-logo">LocalBrands</div>
-          <h2 className="auth-title">Create Account</h2>
-          <p className="auth-subtitle">Join our community of local brands</p>
+    <div className="signup-container">
+      <div className="signup-card">
+        {/* Logo */}
+        <div className="signup-logo">Localo</div>
+
+        {/* Title */}
+        <h1 className="signup-title">Sign Up</h1>
+
+        {/* Full Name */}
+        <div className="form-group">
+          <label className="form-label">
+            Full Name<span className="required-star">*</span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your full name"
+            value={formData.name}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
         </div>
 
-        {error && <div className="auth-error">{error}</div>}
-        {success && <div className="auth-success">{success}</div>}
+        {/* Address */}
+        <div className="form-group">
+          <label className="form-label">
+            Address<span className="required-star">*</span>
+          </label>
+          <input
+            type="text"
+            name="address"
+            placeholder="123 Main St, City"
+            value={formData.address}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
 
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label className="form-label">First Name</label>
+        {/* Email */}
+        <div className="form-group">
+          <label className="form-label">
+            Email<span className="required-star">*</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="example@gmail.com"
+            value={formData.email}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
+
+        {/* Phone Number */}
+        <div className="form-group">
+          <label className="form-label">
+            Phone Number<span className="required-star">*</span>
+          </label>
+
+          <div className="phone-input-container">
+            <div className="phone-prefix">
+              <img
+                src="https://flagcdn.com/w40/eg.png"
+                alt="Egypt flag"
+                className="flag-icon"
+              />
+              <span className="dropdown-arrow">▼</span>
+            </div>
+
             <input
-              type="text"
-              name="firstName"
-              className="form-input"
-              placeholder="Enter your first name"
-              value={formData.firstName}
+              type="tel"
+              name="phoneNumber"
+              placeholder="+20 _ _ _ _ _ _ _"
+              value={formData.phoneNumber}
               onChange={handleChange}
+              className="phone-input"
               required
             />
           </div>
+        </div>
 
-          <div className="form-group">
-            <label className="form-label">Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              className="form-input"
-              placeholder="Enter your last name"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        {/* Password */}
+        <div className="form-group">
+          <label className="form-label">
+            Password<span className="required-star">*</span>
+          </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
 
-          <div className="form-group">
-            <label className="form-label">Email Address</label>
-            <input
-              type="email"
-              name="email"
-              className="form-input"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        {/* Confirm Password */}
+        <div className="form-group">
+          <label className="form-label">
+            Confirm Password<span className="required-star">*</span>
+          </label>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
 
-          <div className="form-group">
-            <label className="form-label">Password</label>
-            <input
-              type="password"
-              name="password"
-              className="form-input"
-              placeholder="Create a password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        {/* Error */}
+        {error && <div className="error-message">{error}</div>}
 
-          <div className="form-group">
-            <label className="form-label">Confirm Password</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              className="form-input"
-              placeholder="Confirm your password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        {/* Submit */}
+        <button
+          onClick={handleSubmit}
+          className="submit-button"
+          disabled={isLoading}
+        >
+          {isLoading ? "Creating Account..." : "Create Account"}
+        </button>
 
-          <button 
-            type="submit" 
-            className="auth-button"
-            disabled={loading}
-          >
-            {loading ? 'Creating Account...' : 'Create Account'}
-          </button>
-        </form>
-
-        <div className="auth-switch">
-          Already have an account? 
-          <Link to="/signin" className="auth-link">Sign in</Link>
+        {/* Sign In Link */}
+        <div className="signin-link">
+          Already have an account?{" "}
+          <Link to="/signin" className="signin-link-text">
+            Sign in
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};

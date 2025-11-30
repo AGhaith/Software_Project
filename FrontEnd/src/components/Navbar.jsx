@@ -1,32 +1,37 @@
-import './Navbar.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
-export default function Navbar() {
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Categories", href: "#categories" },
+  { label: "Search", href: "#search" },
+  { label: "About", href: "#about" },
+];
+
+export const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">LocalBrands</Link>
+    <header className="navbar">
+      <Link to="/" className="navbar-logo animate-fade-in">
+        Localo
+      </Link>
 
-        <ul className="navbar-menu">
-          <li className="navbar-item">
-            <Link to="/" className="navbar-link">Home</Link>
-          </li>
-          <li className="navbar-item">Brands</li>
-          <li className="navbar-item">Categories</li>
-          <li className="navbar-item">Contact</li>
-          
-          {/* Account Dropdown */}
-          <li className="navbar-item account-dropdown">
-            <span>Account</span>
-            <div className="dropdown-menu">
-              <Link to="/signin" className="dropdown-item">
-                Sign In
-              </Link>
-              <div className="dropdown-divider"></div>
-            </div>
-          </li>
-        </ul>
+      <nav className="navbar-nav animate-fade-in animate-delay">
+        {navItems.map((item, index) => (
+          <a key={index} href={item.href} className="navbar-link">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <div className="navbar-buttons animate-fade-in animate-delay">
+        <Link to="/signin" className="btn btn-outline">
+          Log In
+        </Link>
+        <Link to="/signup" className="btn btn-primary">
+          Sign Up
+        </Link>
       </div>
-    </nav>
+    </header>
   );
-}
+};

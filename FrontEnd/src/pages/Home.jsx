@@ -1,17 +1,26 @@
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import Categories from "../components/CategoryList";
-import FeaturedBrands from "../components/FeaturedBrands";
-import Footer from "../components/Footer";
+import React from "react";
+import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
+import { FeaturedBrands } from "../components/FeaturedBrands";
+import { CategoryList } from "../components/CategoryList";
+import { Footer } from "../components/Footer";
+import "../App.css";
 
-export default function Home() {
+export const Home = () => {
   return (
-    <>
+    <div style={{
+      background: '#fcfcfc',
+      overflow: 'hidden',
+      width: '100%',
+      minWidth: '1431px',
+      minHeight: '100vh',
+      position: 'relative'
+    }}>
       <Navbar />
       <Hero />
-      <Categories />
       <FeaturedBrands />
+      <CategoryList />
       <Footer />
-    </>
+    </div>
   );
-}
+};
