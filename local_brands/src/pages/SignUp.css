@@ -28,6 +28,14 @@
   text-align: center;
   margin-bottom: 8px;
   font-family: 'Chewy', Helvetica;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.signup-logo:hover {
+  opacity: 0.8;
 }
 
 .signup-title {

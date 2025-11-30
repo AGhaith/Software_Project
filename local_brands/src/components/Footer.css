@@ -99,6 +99,10 @@
   border: none;
   cursor: pointer;
   transition: background 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .cta-button:hover {

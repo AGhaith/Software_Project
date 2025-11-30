@@ -82,9 +82,9 @@ export const SignUp = () => {
       {/* Card */}
       <div className="signup-card">
         {/* Logo */}
-        <div className="signup-logo">
+        <Link to="/" className="signup-logo">
           Localo
-        </div>
+        </Link>
 
         {/* Title */}
         <h1 className="signup-title">

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const callToActions = [
@@ -68,7 +69,13 @@ export const Footer = () => {
 
               <p className="cta-description">{cta.description}</p>
 
-              <button className="cta-button">Register here</button>
+              {cta.title === "Register a Brand" ? (
+                <Link to="/register-brand" className="cta-button">
+                  Register here
+                </Link>
+              ) : (
+                <button className="cta-button">Register here</button>
+              )}
             </div>
           ))}
         </div>

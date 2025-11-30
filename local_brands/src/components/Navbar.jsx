@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Categories", href: "#categories" },
-  { label: "Search", href: "#search" },
-  { label: "About", href: "#about" },
+  { label: "Home", href: "/", isLink: true },
+  { label: "Categories", href: "#categories", isLink: false },
+  { label: "Search", href: "/search", isLink: true },
+  { label: "About", href: "#about", isLink: false },
 ];
 
 export const Navbar = () => {
@@ -17,11 +17,17 @@ export const Navbar = () => {
       </Link>
 
       <nav className="navbar-nav animate-fade-in animate-delay">
-        {navItems.map((item, index) => (
-          <a key={index} href={item.href} className="navbar-link">
-            {item.label}
-          </a>
-        ))}
+        {navItems.map((item, index) =>
+          item.isLink ? (
+            <Link key={index} to={item.href} className="navbar-link">
+              {item.label}
+            </Link>
+          ) : (
+            <a key={index} href={item.href} className="navbar-link">
+              {item.label}
+            </a>
+          )
+        )}
       </nav>
 
       <div className="navbar-buttons animate-fade-in animate-delay">

@@ -28,6 +28,14 @@
   text-align: center;
   margin-bottom: 8px;
   font-family: 'Chewy', Helvetica;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.signin-logo:hover {
+  opacity: 0.8;
 }
 
 .signin-title {
@@ -197,4 +205,14 @@
 
 .signup-link-text:hover {
   text-decoration: underline;
+}
+
+.error-message {
+  color: #ff4d4f;
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
 }

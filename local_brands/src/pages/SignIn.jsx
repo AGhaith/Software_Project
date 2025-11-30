@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "./SignIn.css";
 
 export const SignIn = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false
   });
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -15,11 +19,46 @@ export const SignIn = () => {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+    // Clear error when user starts typing
+    if (error) setError('');
   };
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-    // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    
+    // Basic validation
+    if (!formData.email || !formData.password) {
+      setError('Please fill in all required fields');
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const response = await axios.post('http://localhost:5033/api/Auth/login', {
+        email: formData.email,
+        password: formData.password
+      });
+
+      console.log('Login response:', response.data);
+      
+      // Save token and role to local storage
+      if (response.data.token) {
+        localStorage.setItem('token', response.data.token);
+        if (response.data.role) {
+          localStorage.setItem('role', response.data.role);
+        }
+      }
+      
+      // Redirect based on role or to home
+      navigate('/');
+    } catch (err) {
+      const errorMessage = err.response?.data || 'Invalid email or password';
+      setError(typeof errorMessage === 'string' ? errorMessage : 'Invalid email or password');
+      console.error('Login error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleSocialLogin = (provider) => {
@@ -33,9 +72,9 @@ export const SignIn = () => {
       {/* Card */}
       <div className="signin-card">
         {/* Logo */}
-        <div className="signin-logo">
+        <Link to="/" className="signin-logo">
           Localo
-        </div>
+        </Link>
 
         {/* Title */}
         <h1 className="signin-title">
@@ -92,12 +131,20 @@ export const SignIn = () => {
           </Link>
         </div>
 
+        {/* Error Message */}
+        {error && (
+          <div className="error-message">
+            {error}
+          </div>
+        )}
+
         {/* Submit Button */}
         <button
           onClick={handleSubmit}
           className="submit-button"
+          disabled={isLoading}
         >
-          Next
+          {isLoading ? 'Signing In...' : 'Next'}
         </button>
 
         {/* Other Sign In Options */}
