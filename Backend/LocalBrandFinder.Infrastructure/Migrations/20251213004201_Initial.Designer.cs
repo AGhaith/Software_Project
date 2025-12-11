@@ -13,7 +13,11 @@ namespace LocalBrandFinder.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
 <<<<<<<< HEAD:Backend/LocalBrandFinder.Infrastructure/Migrations/20251213004201_Initial.Designer.cs
+<<<<<<<< HEAD:Backend/LocalBrandFinder.Infrastructure/Migrations/20251213004201_Initial.Designer.cs
     [Migration("20251213004201_Initial")]
+========
+    [Migration("20251211174359_Initial")]
+>>>>>>>> Product Model and Repository:Backend/LocalBrandFinder.Infrastructure/Migrations/20251211174359_Initial.Designer.cs
 ========
     [Migration("20251211174359_Initial")]
 >>>>>>>> Product Model and Repository:Backend/LocalBrandFinder.Infrastructure/Migrations/20251211174359_Initial.Designer.cs
