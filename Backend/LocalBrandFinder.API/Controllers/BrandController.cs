@@ -129,6 +129,15 @@ namespace LocalBrandFinder.API.Controllers;
             includeString: "Products"
         );
         var brand = brandList.FirstOrDefault();
+        brand.Products.Add(product);
+        await _unitOfWork.Brands.UpdateAsync(brand);
+        bool r = await _unitOfWork.SaveChangesAsync();
+        if (r)
+            return Ok(new
+            {
+                message = "Product added to brand successfully.",
+                product = brand.Products.Select(c => c.Name).ToList()
+            });
 
     [HttpGet("get-all")]
     public async Task<IActionResult> GetAllBrands()
