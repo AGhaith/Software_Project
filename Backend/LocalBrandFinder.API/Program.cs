@@ -8,7 +8,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         policy
-            .AllowAnyOrigin()    // or .WithOrigins("https://your-frontend.com")
+            .AllowAnyOrigin()    
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
