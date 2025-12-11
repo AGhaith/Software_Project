@@ -15,6 +15,7 @@ public static class ApplicationServiceCollectionExtensions
         services.AddSingleton<PasswordUtility>();
         services.AddSingleton<AuthUtility>();
         services.AddValidatorsFromAssemblyContaining<CustomerSignUpDtoValidator>();
+        services.AddSingleton<ImgBBService>();
 
         return services;
     }

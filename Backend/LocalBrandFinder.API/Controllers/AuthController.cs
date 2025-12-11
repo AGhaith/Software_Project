@@ -1,5 +1,6 @@
 using FluentValidation;
 using FluentValidation.Results;
+using LocalBrandFinder.Application;
 using LocalBrandFinder.Application.DTOs.Authentication;
 using LocalBrandFinder.Application.Interfaces;
 using LocalBrandFinder.Application.Utilities;
@@ -18,7 +19,8 @@ public class AuthController(
     PasswordUtility _passwordUtility,
     AuthUtility _authUtility,
     IValidator<CustomerSignUpDto> _customerValidator,
-    IValidator<BrandSignUpDto> _brandValidator
+    IValidator<BrandSignUpDto> _brandValidator,
+    ImgBBService _imgBB
 ) : ControllerBase
 {
     [HttpPost("login")]
@@ -44,7 +46,7 @@ public class AuthController(
     }
 
     [HttpPost("customer/register")]
-    public async Task<IActionResult> RegisterCustomer(CustomerSignUpDto registerDto)
+    public async Task<IActionResult> RegisterCustomer(CustomerSignUpDto registerDto, IFormFile pfp)
     {
         ValidationResult validation = await _customerValidator.ValidateAsync(registerDto);
         if (!validation.IsValid)
@@ -58,7 +60,13 @@ public class AuthController(
             PhoneNumber = registerDto.PhoneNumber ?? string.Empty,
             Address = registerDto.Address ?? string.Empty
         };
+        if (!(pfp == null || pfp.Length == 0))
+        {
 
+            var url = await _imgBB.UploadAsync(pfp);
+
+            customer.pfpLink = url;
+        }
         bool added = await _unitOfWork.Customers.AddAsync(customer);
         bool saved = await _unitOfWork.SaveChangesAsync();
 
@@ -76,7 +84,8 @@ public class AuthController(
     }
 
     [HttpPost("brand/register")]
-    public async Task<IActionResult> RegisterBrand(BrandSignUpDto registerDto)
+    public async Task<IActionResult> RegisterBrand(BrandSignUpDto registerDto,IFormFile logo)
+
     {
         ValidationResult validation = await _brandValidator.ValidateAsync(registerDto);
         if (!validation.IsValid)
@@ -90,8 +99,14 @@ public class AuthController(
             Description = registerDto.Description ?? string.Empty,
             PhoneNumber = registerDto.PhoneNumber ?? string.Empty,
             Address = registerDto.Address ?? string.Empty,
-            LogoUrl = registerDto.LogoUrl ?? string.Empty
         };
+        if (!(logo == null || logo.Length == 0))
+        {
+
+            var url = await _imgBB.UploadAsync(logo);
+
+            brand.LogoUrl = url;
+        }
 
         bool added = await _unitOfWork.Brands.AddAsync(brand);
         bool saved = await _unitOfWork.SaveChangesAsync();
