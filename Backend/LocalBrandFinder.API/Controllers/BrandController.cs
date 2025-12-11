@@ -1,11 +1,7 @@
 using LocalBrandFinder.Application.Interfaces;
-using LocalBrandFinder.Domain.Models;
+using LocalBrandFinder.Domain.Models.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Needed for Include
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocalBrandFinder.API.Controllers;
 
@@ -22,10 +18,10 @@ public class BrandController : ControllerBase
 
     // PATCH: api/brand/add/{brandId}/categories/{categoryId}
     [HttpPatch("add/{brandId}/categories/{categoryId}")]
-    [Authorize(Roles ="Brand")]
-    public async Task<IActionResult> AddCategoryToBrand(Guid brandId, string categoryName)
+    [Authorize(Roles = "Brand")]
+    public async Task<IActionResult> AddCategoryToBrand(Guid brandId, Guid categoryId)
     {
-        categoryName = categoryName.ToLower();
+
         // Include Categories to avoid null
         var brandList = await _unitOfWork.Brands.GetAsync(
             b => b.Id == brandId,
@@ -36,11 +32,11 @@ public class BrandController : ControllerBase
         if (brand == null)
             return NotFound($"Brand with ID {brandId} not found.");
 
-        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Name.ToLower() == categoryName);
+        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Id == categoryId);
         if (category == null)
-            return NotFound($"Category with Name {categoryName} not found.");
+            return NotFound($"Category with ID {categoryId} not found.");
 
-        if (brand.Categories.Any(c => c.Name.ToLower() == categoryName))
+        if (brand.Categories.Any(c => c.Id == categoryId))
             return BadRequest("Category already assigned to this brand.");
 
         brand.Categories.Add(category);
@@ -79,7 +75,7 @@ public class BrandController : ControllerBase
 
         return Ok(brands);
     }
-    [HttpGet("search/{brandName}")]
+    [HttpGet("Search/{brandName}")]
     public async Task<IActionResult> SearchBrand(string brandName)
     {
         if (string.IsNullOrWhiteSpace(brandName))
@@ -101,17 +97,43 @@ public class BrandController : ControllerBase
             b.LogoUrl,
             b.WebsiteUrl,
             b.Description,
+            b.Products,
         });
 
         return Ok(result);
     }
-
-
-    [HttpGet("get-all")]
-    public async Task<IActionResult> GetAllBrands()
+    [HttpPatch("add/{brandId}/Product/{ProductId}")]
+    [Authorize(Roles = "Brand")]
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, Guid ProductId)
     {
-        var brands = await _unitOfWork.Brands.GetAllAsync();
-        return Ok(brands);
+        
+        var brandList = await _unitOfWork.Brands.GetAsync(
+            b => b.Id == brandId,
+            includeString: "Products"
+        );
+        var brand = brandList.FirstOrDefault();
+
+        if (brand == null)
+            return NotFound($"Brand with ID {brandId} not found.");
+
+        var product = await _unitOfWork.Products.GetSingleAsync(c => c.Id==ProductId);
+        if (product == null)
+            return NotFound($"Product ID {ProductId} not found.");
+
+        if (brand.Products.Any(c => c.Id == ProductId))
+            return BadRequest("Product already exist");
+
+        brand.Products.Add(product);
+        await _unitOfWork.Brands.UpdateAsync(brand);
+        bool r = await _unitOfWork.SaveChangesAsync();
+        if (r)
+            return Ok(new
+            {
+                message = "Product added to brand successfully.",
+                product = brand.Products.Select(c => c.Name).ToList()
+            });
+
+        return BadRequest(new { message = "Failed to add Product." });
     }
 
 }
