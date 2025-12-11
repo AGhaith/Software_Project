@@ -12,4 +12,7 @@ public class Brand : BaseUser
     public string PhoneNumber { get; set; } = string.Empty;
     public string Address { get; set; } = string.Empty;
     public string LogoUrl { get; set; } = string.Empty;
+    public List<Product>? Products { get; set; }
+
+
 }
