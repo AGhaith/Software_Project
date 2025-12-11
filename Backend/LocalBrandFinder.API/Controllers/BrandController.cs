@@ -47,9 +47,9 @@ namespace LocalBrandFinder.API.Controllers;
         if (brand == null)
             return NotFound($"Brand with ID {brandId} not found.");
 
-        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Name.ToLower() == categoryName);
+        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Id == categoryId);
         if (category == null)
-            return NotFound($"Category with Name {categoryName} not found.");
+            return NotFound($"Category with ID {categoryId} not found.");
 
         if (brand.Categories?.Any(c => c.Name.ToLower() == categoryName) ?? false)
             return BadRequest("Category already assigned to this brand.");
@@ -114,10 +114,21 @@ namespace LocalBrandFinder.API.Controllers;
             b.LogoUrl,
             b.WebsiteUrl,
             b.Description,
+            b.Products,
         });
 
         return Ok(result);
     }
+    [HttpPatch("add/{brandId}/Product/{ProductId}")]
+    [Authorize(Roles = "Brand")]
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, Guid ProductId)
+    {
+        
+        var brandList = await _unitOfWork.Brands.GetAsync(
+            b => b.Id == brandId,
+            includeString: "Products"
+        );
+        var brand = brandList.FirstOrDefault();
 
     [HttpGet("get-all")]
     public async Task<IActionResult> GetAllBrands()

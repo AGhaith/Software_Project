@@ -12,7 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalBrandFinder.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<<< HEAD:Backend/LocalBrandFinder.Infrastructure/Migrations/20251213004201_Initial.Designer.cs
     [Migration("20251213004201_Initial")]
+========
+    [Migration("20251211174359_Initial")]
+>>>>>>>> Product Model and Repository:Backend/LocalBrandFinder.Infrastructure/Migrations/20251211174359_Initial.Designer.cs
     partial class Initial
     {
         /// <inheritdoc />
@@ -143,6 +147,45 @@ namespace LocalBrandFinder.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("LocalBrandFinder.Domain.Models.Common.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.PrimitiveCollection<string>("AvailableSizes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AvailableStock")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("BrandId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Price")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.ToTable("Product");
+                });
+
             modelBuilder.Entity("LocalBrandFinder.Domain.Models.Customer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -202,6 +245,18 @@ namespace LocalBrandFinder.Infrastructure.Migrations
                         .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("LocalBrandFinder.Domain.Models.Common.Product", b =>
+                {
+                    b.HasOne("LocalBrandFinder.Domain.Models.Brand", null)
+                        .WithMany("Products")
+                        .HasForeignKey("BrandId");
+                });
+
+            modelBuilder.Entity("LocalBrandFinder.Domain.Models.Brand", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

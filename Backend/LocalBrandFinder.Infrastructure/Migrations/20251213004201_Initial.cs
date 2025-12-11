@@ -72,6 +72,29 @@ namespace LocalBrandFinder.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AvailableSizes = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AvailableStock = table.Column<int>(type: "int", nullable: false),
+                    BrandId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Product_Brands_BrandId",
+                        column: x => x.BrandId,
+                        principalTable: "Brands",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "BrandCategory",
                 columns: table => new
                 {
@@ -110,6 +133,11 @@ namespace LocalBrandFinder.Infrastructure.Migrations
                 name: "IX_BrandCategory_CategoriesId",
                 table: "BrandCategory",
                 column: "CategoriesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_BrandId",
+                table: "Product",
+                column: "BrandId");
         }
 
         /// <inheritdoc />
@@ -122,10 +150,13 @@ namespace LocalBrandFinder.Infrastructure.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Brands");
+                name: "Product");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Brands");
         }
     }
 }
