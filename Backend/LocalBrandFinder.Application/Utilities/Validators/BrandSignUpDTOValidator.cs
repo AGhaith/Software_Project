@@ -60,12 +60,6 @@ public class BrandSignUpDtoValidator : AbstractValidator<BrandSignUpDto>
             .When(x => !string.IsNullOrWhiteSpace(x.WebsiteUrl))
             .WithMessage("Website URL must be a valid link.");
 
-        // --- Logo URL ---
-        RuleFor(x => x.LogoUrl)
-            .Must(url => Uri.TryCreate(url, UriKind.Absolute, out _))
-            .When(x => !string.IsNullOrWhiteSpace(x.LogoUrl))
-            .WithMessage("Logo URL must be a valid link.");
-
         // --- Description ---
         RuleFor(x => x.Description)
             .MaximumLength(300)

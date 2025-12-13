@@ -11,7 +11,6 @@ RUN dotnet restore LocalBrandFinder.sln
 # Set the working directory to the API project folder
 WORKDIR /src/LocalBrandFinder.API
 
-
 EXPOSE 5033
 
 # Environment variables
