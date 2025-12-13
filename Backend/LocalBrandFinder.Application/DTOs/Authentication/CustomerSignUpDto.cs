@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 namespace LocalBrandFinder.Application.DTOs.Authentication;
@@ -10,4 +11,6 @@ public class CustomerSignUpDto
     public required string ConfirmPassword { get; set; }
     public string? PhoneNumber { get; set; }
     public string? Address { get; set; }
-}
+    
+    public IFormFile? ProfilePicture { get; set; }
+ }

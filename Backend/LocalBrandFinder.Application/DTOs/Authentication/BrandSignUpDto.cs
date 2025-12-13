@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 namespace LocalBrandFinder.Application.DTOs.Authentication;
@@ -8,7 +9,7 @@ public class BrandSignUpDto
     public required string Email { get; set; }
    public required string Password { get; set; }
     public required string ConfirmPassword { get; set; }
-
+    public IFormFile? Logo {  get; set; }
     public string? Category { get; set; }
     public string? Tags { get; set; }
     public string? WebsiteUrl { get; set; }

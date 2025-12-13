@@ -44,14 +44,15 @@ public class AuthController(
 
         return Unauthorized("Invalid email or password");
     }
-
     [HttpPost("customer/register")]
-    public async Task<IActionResult> RegisterCustomer(CustomerSignUpDto registerDto, IFormFile pfp)
+    public async Task<IActionResult> RegisterCustomer([FromForm] CustomerSignUpDto registerDto)
     {
+        // Validate the DTO
         ValidationResult validation = await _customerValidator.ValidateAsync(registerDto);
         if (!validation.IsValid)
             return BadRequest(validation.Errors.Select(e => e.ErrorMessage));
 
+        // Create the customer object
         var customer = new Customer
         {
             Name = registerDto.Name,
@@ -60,13 +61,16 @@ public class AuthController(
             PhoneNumber = registerDto.PhoneNumber ?? string.Empty,
             Address = registerDto.Address ?? string.Empty
         };
-        if (!(pfp == null || pfp.Length == 0))
+        var pfp = registerDto.ProfilePicture;
+        // Handle profile picture
+
+        if (pfp != null && pfp.Length > 0)
         {
-
-            var url = await _imgBB.UploadAsync(pfp);
-
+            var url = await _imgBB.UploadAsync(pfp); // Your image upload service
             customer.pfpLink = url;
         }
+
+        // Save to database
         bool added = await _unitOfWork.Customers.AddAsync(customer);
         bool saved = await _unitOfWork.SaveChangesAsync();
 
@@ -83,8 +87,10 @@ public class AuthController(
         return StatusCode(500, "Failed to register customer.");
     }
 
+
+
     [HttpPost("brand/register")]
-    public async Task<IActionResult> RegisterBrand(BrandSignUpDto registerDto,IFormFile logo)
+    public async Task<IActionResult> RegisterBrand([FromForm] BrandSignUpDto registerDto)
 
     {
         ValidationResult validation = await _brandValidator.ValidateAsync(registerDto);
@@ -100,6 +106,7 @@ public class AuthController(
             PhoneNumber = registerDto.PhoneNumber ?? string.Empty,
             Address = registerDto.Address ?? string.Empty,
         };
+        var logo = registerDto.Logo;
         if (!(logo == null || logo.Length == 0))
         {
 
