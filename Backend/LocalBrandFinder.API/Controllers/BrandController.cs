@@ -1,3 +1,4 @@
+using LocalBrandFinder.Application;
 using LocalBrandFinder.Application.Interfaces;
 using LocalBrandFinder.Domain.Models.Common;
 using Microsoft.AspNetCore.Authorization;
@@ -10,9 +11,10 @@ namespace LocalBrandFinder.API.Controllers;
 public class BrandController : ControllerBase
 {
     private readonly IUnitOfWork _unitOfWork;
-
-    public BrandController(IUnitOfWork unitOfWork)
+    private ImgBBService _ImgBBService;
+    public BrandController(IUnitOfWork unitOfWork, ImgBBService imgBBService)
     {
+        _ImgBBService = imgBBService;
         _unitOfWork = unitOfWork;
     }
 
@@ -102,28 +104,46 @@ public class BrandController : ControllerBase
 
         return Ok(result);
     }
-    [HttpPatch("add/{brandId}/Product/{ProductId}")]
-    [Authorize(Roles = "Brand")]
-    public async Task<IActionResult> AddProductToBrand(Guid brandId, Guid ProductId)
+    [HttpPost("Add-Product/{brandId}/")]
+    [Authorize(Roles = "Brand")]   
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, CreateProductDTO product)
     {
-        
+
         var brandList = await _unitOfWork.Brands.GetAsync(
-            b => b.Id == brandId,
-            includeString: "Products"
+            b => b.Id == brandId
         );
         var brand = brandList.FirstOrDefault();
 
         if (brand == null)
             return NotFound($"Brand with ID {brandId} not found.");
+        List<String> Urls = new List<String>();
+        if (product.Images != null)
+        {
+            foreach (IFormFile image in product.Images)
+            {
+                if (image.Length == 0)
+                    continue;
+                var url = await _ImgBBService.UploadAsync(image);
+                Urls.Add(url);
+            }
+        }
 
-        var product = await _unitOfWork.Products.GetSingleAsync(c => c.Id==ProductId);
-        if (product == null)
-            return NotFound($"Product ID {ProductId} not found.");
 
-        if (brand.Products.Any(c => c.Id == ProductId))
-            return BadRequest("Product already exist");
 
-        brand.Products.Add(product);
+        Product p = new Product
+        {
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            AvailableStock = product.AvailableStock,
+            AvailableSizes = product.AvailableSizes,
+            Type = product.Type,
+            Images = Urls,
+        };
+
+       
+        brand.Products.Add(p);
+        await _unitOfWork.Products.AddAsync(p);
         await _unitOfWork.Brands.UpdateAsync(brand);
         bool r = await _unitOfWork.SaveChangesAsync();
         if (r)
@@ -133,5 +153,6 @@ public class BrandController : ControllerBase
                 product = brand.Products.Select(c => c.Name).ToList()
             });
 
-
+        return NotFound();
+    }
 }

@@ -7,9 +7,6 @@ using LocalBrandFinder.Application.Utilities;
 using LocalBrandFinder.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace LocalBrandFinder.API.Controllers;
 
 [ApiController]

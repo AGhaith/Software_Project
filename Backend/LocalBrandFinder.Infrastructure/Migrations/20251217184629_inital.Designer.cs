@@ -12,20 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalBrandFinder.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-<<<<<<<< HEAD:Backend/LocalBrandFinder.Infrastructure/Migrations/20251213004201_Initial.Designer.cs
-<<<<<<<< HEAD:Backend/LocalBrandFinder.Infrastructure/Migrations/20251213004201_Initial.Designer.cs
-<<<<<<<< HEAD:Backend/LocalBrandFinder.Infrastructure/Migrations/20251213004201_Initial.Designer.cs
-    [Migration("20251213004201_Initial")]
-========
-    [Migration("20251211174359_Initial")]
->>>>>>>> Product Model and Repository:Backend/LocalBrandFinder.Infrastructure/Migrations/20251211174359_Initial.Designer.cs
-========
-    [Migration("20251211174359_Initial")]
->>>>>>>> Product Model and Repository:Backend/LocalBrandFinder.Infrastructure/Migrations/20251211174359_Initial.Designer.cs
-========
-    [Migration("20251211174359_Initial")]
->>>>>>>> 8e1554f0e15d33debfe3d68b89eec9ef97abe100:Backend/LocalBrandFinder.Infrastructure/Migrations/20251211174359_Initial.Designer.cs
-    partial class Initial
+    [Migration("20251217184629_inital")]
+    partial class inital
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,6 +161,9 @@ namespace LocalBrandFinder.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.PrimitiveCollection<string>("Images")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
