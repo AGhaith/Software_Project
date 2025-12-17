@@ -121,7 +121,7 @@ namespace LocalBrandFinder.API.Controllers;
     }
     [HttpPatch("add/{brandId}/Product/{ProductId}")]
     [Authorize(Roles = "Brand")]
-    public async Task<IActionResult> AddProductToBrand(Guid brandId, CreateProductDTO productdto)
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, Guid ProductId)
     {
         
         var brandList = await _unitOfWork.Brands.GetAsync(
