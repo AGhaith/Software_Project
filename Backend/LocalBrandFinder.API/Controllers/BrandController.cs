@@ -103,10 +103,11 @@ namespace LocalBrandFinder.API.Controllers;
         var brands = await _unitOfWork.Brands.GetAsync(
             b => b.Name.ToLower().Contains(brandName.ToLower())
         );
+        var brand = brands.FirstOrDefault();
 
         if (brands == null || !brands.Any())
             return NotFound($"No brands found matching '{brandName}'.");
-
+        
         var result = brands.Select(b => new
         {
             b.Id,
@@ -115,7 +116,6 @@ namespace LocalBrandFinder.API.Controllers;
             b.LogoUrl,
             b.WebsiteUrl,
             b.Description,
-            b.Products,
         });
 
         return Ok(result);
@@ -149,11 +149,12 @@ namespace LocalBrandFinder.API.Controllers;
         brand.Products.Add(product);
         await _unitOfWork.Brands.UpdateAsync(brand);
         bool r = await _unitOfWork.SaveChangesAsync();
+
         if (r)
             return Ok(new
             {
                 message = "Product added to brand successfully.",
-                product = brand.Products.Select(c => c.Name).ToList()
+                products = p,
             });
 
 
@@ -204,6 +205,21 @@ namespace LocalBrandFinder.API.Controllers;
     {
         throw new NotImplementedException();
     }
+
+    [HttpGet("GetProductsFromBrand/{brandId}/")]
+    public async Task<IActionResult> GetProductsFromBrand(Guid brandId)
+    {
+
+        var ProductList = await _unitOfWork.Products.GetAsync(
+            b => b.BrandId == brandId
+        );
+        if (ProductList == null)
+            return NotFound($"Brand with ID {brandId} not found.");
+       
+        return Ok(ProductList);
+    }
+
+
 }
 
 
