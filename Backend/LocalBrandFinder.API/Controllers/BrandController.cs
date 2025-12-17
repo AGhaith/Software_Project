@@ -24,6 +24,7 @@ namespace LocalBrandFinder.API.Controllers;
 
     public BrandController(IUnitOfWork unitOfWork)
     {
+        _ImgBBService = imgBBService;
         _unitOfWork = unitOfWork;
         _validator = new BrandValidator(_unitOfWork); // ashan aaraf a call el validator
     }
@@ -119,14 +120,13 @@ namespace LocalBrandFinder.API.Controllers;
 
         return Ok(result);
     }
-    [HttpPatch("add/{brandId}/Product/{ProductId}")]
-    [Authorize(Roles = "Brand")]
-    public async Task<IActionResult> AddProductToBrand(Guid brandId, Guid ProductId)
+    [HttpPost("Add-Product/{brandId}/")]
+    [Authorize(Roles = "Brand")]   
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, CreateProductDTO product)
     {
-        
+
         var brandList = await _unitOfWork.Brands.GetAsync(
-            b => b.Id == brandId,
-            includeString: "Products"
+            b => b.Id == brandId
         );
         var brand = brandList.FirstOrDefault();
         brand.Products.Add(product);
