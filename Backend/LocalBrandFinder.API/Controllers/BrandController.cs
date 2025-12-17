@@ -1,7 +1,4 @@
-using LocalBrandFinder.Application;
 using LocalBrandFinder.Application.Interfaces;
-using LocalBrandFinder.Application.Utilities;
-using LocalBrandFinder.Domain.Models;
 using LocalBrandFinder.Domain.Models.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -107,7 +104,7 @@ public class BrandController : ControllerBase
     }
     [HttpPatch("add/{brandId}/Product/{ProductId}")]
     [Authorize(Roles = "Brand")]
-    public async Task<IActionResult> AddProductToBrand(Guid brandId, CreateProductDTO productdto)
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, Guid ProductId)
     {
         
         var brandList = await _unitOfWork.Brands.GetAsync(
@@ -118,21 +115,8 @@ public class BrandController : ControllerBase
 
         if (brand == null)
             return NotFound($"Brand with ID {brandId} not found.");
-        var product = new Product
-        {
-            Name = productdto.Name,
-            Description = productdto.Description,
-            Price = productdto.Price,
-            Type = productdto.Type,
-            AvailableSizes = productdto.AvailableSizes,
-            AvailableStock = productdto.AvailableStock
-        };
-        await _unitOfWork.Products.AddAsync(product);
-        bool saveResult = await _unitOfWork.SaveChangesAsync();
-        if (!saveResult)
-            return BadRequest(new { message = "Failed to create Product." });
 
-        Guid ProductId = product.Id;
+        var product = await _unitOfWork.Products.GetSingleAsync(c => c.Id==ProductId);
         if (product == null)
             return NotFound($"Product ID {ProductId} not found.");
 
@@ -149,7 +133,5 @@ public class BrandController : ControllerBase
                 product = brand.Products.Select(c => c.Name).ToList()
             });
 
-        return BadRequest(new { message = "Failed to add Product." });
-    }
 
 }
