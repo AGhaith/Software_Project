@@ -45,8 +45,12 @@ public class ApplicationDbContext : DbContext
 
         // Apply configurations from the current assembly
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+        modelBuilder.Entity<Brand>()
+                .HasMany(b => b.Categories)
+                .WithMany(c => c.Brands);
 
-        // Seed categories
+        modelBuilder.Entity<Brand>()
+            .HasMany(b => b.Products);
         modelBuilder.Entity<Category>().HasData(
             new Category
             {

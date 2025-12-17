@@ -87,10 +87,11 @@ public class BrandController : ControllerBase
         var brands = await _unitOfWork.Brands.GetAsync(
             b => b.Name.ToLower().Contains(brandName.ToLower())
         );
+        var brand = brands.FirstOrDefault();
 
         if (brands == null || !brands.Any())
             return NotFound($"No brands found matching '{brandName}'.");
-
+        
         var result = brands.Select(b => new
         {
             b.Id,
@@ -99,7 +100,6 @@ public class BrandController : ControllerBase
             b.LogoUrl,
             b.WebsiteUrl,
             b.Description,
-            b.Products,
         });
 
         return Ok(result);
@@ -132,6 +132,7 @@ public class BrandController : ControllerBase
 
         Product p = new Product
         {
+            Id = Guid.NewGuid(),
             Name = product.Name,
             Price = product.Price,
             Description = product.Description,
@@ -141,18 +142,34 @@ public class BrandController : ControllerBase
             Images = Urls,
         };
 
-       
         brand.Products.Add(p);
+
         await _unitOfWork.Products.AddAsync(p);
         await _unitOfWork.Brands.UpdateAsync(brand);
         bool r = await _unitOfWork.SaveChangesAsync();
+
         if (r)
             return Ok(new
             {
                 message = "Product added to brand successfully.",
-                product = brand.Products.Select(c => c.Name).ToList()
+                products = p,
             });
 
         return NotFound();
     }
+
+    [HttpGet("GetProductsFromBrand/{brandId}/")]
+    public async Task<IActionResult> GetProductsFromBrand(Guid brandId)
+    {
+
+        var ProductList = await _unitOfWork.Products.GetAsync(
+            b => b.BrandId == brandId
+        );
+        if (ProductList == null)
+            return NotFound($"Brand with ID {brandId} not found.");
+       
+        return Ok(ProductList);
+    }
+
+
 }
