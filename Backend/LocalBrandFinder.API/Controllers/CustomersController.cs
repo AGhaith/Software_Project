@@ -15,7 +15,7 @@ public class CustomersController : ControllerBase
         _unitOfWork = unitOfWork;
     }
 
-    [HttpGet("getall")]
+    [HttpGet("get-all")]
     public async Task<ActionResult<IEnumerable<Customer>>> GetAllCustomers()
     {
         var customers = await _unitOfWork.Customers.GetAllAsync();

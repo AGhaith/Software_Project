@@ -1,4 +1,5 @@
 using LocalBrandFinder.API.DependencyInjection;
+using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         policy
-            .AllowAnyOrigin()    // or .WithOrigins("https://your-frontend.com")
+            .AllowAnyOrigin()    
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
