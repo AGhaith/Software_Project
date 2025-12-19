@@ -1,11 +1,49 @@
+
 .brand-detail-container {
+  position: relative;
   padding: 40px;
-  background-color: #f5f7fa;
   min-height: 100vh;
+  overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
+
+  
+  background: linear-gradient(
+    120deg,
+    #f8fafc 0%,
+    #ffffff 40%,
+    #eef2ff 100%
+  );
 }
 
-/* Header */
+.brand-detail-container::before,
+.brand-detail-container::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.brand-detail-container::before {
+  background: #fbcfe8;
+  top: -150px;
+  right: -150px;
+}
+
+.brand-detail-container::after {
+  background: #bfdbfe;
+  bottom: -150px;
+  left: -150px;
+}
+
+.brand-detail-container > * {
+  position: relative;
+  z-index: 1;
+}
+
 .brand-header {
   display: flex;
   align-items: center;
@@ -24,7 +62,7 @@
 .brand-name {
   font-size: 32px;
   margin-bottom: 6px;
-  color: #222;
+  color: #111;
 }
 
 .brand-tagline {
@@ -32,13 +70,13 @@
   font-size: 14px;
 }
 
-/* Sections */
+
 .brand-section {
   background: white;
   padding: 25px;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .brand-section h2 {
@@ -53,7 +91,8 @@
   line-height: 1.6;
 }
 
-/* Categories */
+
+
 .category-tags {
   display: flex;
   flex-wrap: wrap;
@@ -62,12 +101,13 @@
 
 .category-tag {
   background-color: #eef2f7;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
 }
 
-/* Social Links */
+
+
 .social-links {
   display: flex;
   gap: 20px;
@@ -75,7 +115,7 @@
 
 .social-links a {
   text-decoration: none;
-  color: #007bff;
+  color: #FF8500;
   font-size: 14px;
 }
 
@@ -83,7 +123,7 @@
   text-decoration: underline;
 }
 
-/* Reviews */
+
 .reviews-section {
   text-align: center;
 }

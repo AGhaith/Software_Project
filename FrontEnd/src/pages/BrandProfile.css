@@ -1,32 +1,72 @@
 .profile-container {
+  position: relative;
   padding: 40px;
-  background-color: #f5f7fa;
   min-height: 100vh;
+  overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
+
+  background: linear-gradient(
+    120deg,
+    #f8fafc 0%,
+    #ffffff 40%,
+    #eef2ff 100%
+  );
 }
+
+.profile-container::before,
+.profile-container::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.profile-container::before {
+  background: #fbcfe8;
+  top: -150px;
+  right: -150px;
+}
+
+.profile-container::after {
+  background: #bfdbfe;
+  bottom: -150px;
+  left: -150px;
+}
+
+.profile-container > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 .profile-title {
   font-size: 32px;
   margin-bottom: 30px;
-  color: #222;
+  color: #FF8500;
 }
 
-/* Section Styling */
+
+
 .profile-section {
   background: #ffffff;
   padding: 25px;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .profile-section h2 {
   margin-bottom: 20px;
   font-size: 20px;
-  color: #333;
+  color: #FF8500;
 }
 
-/* Form Fields */
+
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -50,10 +90,11 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: #FF8500;
 }
 
-/* Save Button */
+
+
 .save-section {
   text-align: right;
 }
@@ -63,11 +104,11 @@
   font-size: 15px;
   border-radius: 6px;
   border: none;
-  background-color: #007bff;
+  background-color: #FF8500;
   color: white;
   cursor: pointer;
 }
 
 .save-btn:hover {
-  background-color: #0056b3;
+  background-color: #9d5100;
 }
