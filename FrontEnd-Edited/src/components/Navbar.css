@@ -11,10 +11,10 @@
 }
 
 .navbar-logo {
-  font-family: 'Chewy', Helvetica;
-  font-weight: 400;
+  font-family: 'Pavelt', Helvetica;
+  font-weight: 800;
   color: #ff8500;
-  font-size: 48px;
+  font-size: 32px;
   text-decoration: none;
   transform: translateY(-1rem);
 }
@@ -87,4 +87,14 @@
 
 .btn-primary:hover {
   background: #e67700;
+}
+
+.user-icon {
+  color: #ff8500;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.user-icon:hover {
+  color: #e67700;
 }
