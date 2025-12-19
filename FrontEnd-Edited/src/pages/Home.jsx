@@ -10,16 +10,18 @@ export const Home = () => {
   return (
     <div style={{
       background: '#fcfcfc',
-      overflow: 'hidden',
       width: '100%',
-      minWidth: '1431px',
       minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
       position: 'relative'
     }}>
       <Navbar />
-      <Hero />
-      <FeaturedBrands />
-      <CategoryList />
+      <div style={{ flex: 1 }}>
+        <Hero />
+        <FeaturedBrands />
+        <CategoryList />
+      </div>
       <Footer />
     </div>
   );

@@ -107,5 +107,11 @@ public class BrandController : ControllerBase
     }
 
 
+    [HttpGet("get-all")]
+    public async Task<IActionResult> GetAllBrands()
+    {
+        var brands = await _unitOfWork.Brands.GetAllAsync();
+        return Ok(brands);
+    }
 
 }

@@ -105,6 +105,7 @@ public class AuthController(
             Description = registerDto.Description ?? string.Empty,
             PhoneNumber = registerDto.PhoneNumber ?? string.Empty,
             Address = registerDto.Address ?? string.Empty,
+            WebsiteUrl = registerDto.WebsiteUrl ?? string.Empty,
         };
         var logo = registerDto.Logo;
         if (!(logo == null || logo.Length == 0))

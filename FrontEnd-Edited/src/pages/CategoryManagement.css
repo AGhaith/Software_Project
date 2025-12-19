@@ -1,0 +1,109 @@
+.category-container {
+  padding: 40px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.category-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* Sections */
+.category-section {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.category-section h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Current Categories */
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #eef2f7;
+  padding: 10px 15px;
+  border-radius: 6px;
+}
+
+.category-item span {
+  font-size: 14px;
+}
+
+.remove-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #b52a37;
+}
+
+/* Add Category */
+.add-category {
+  display: flex;
+  gap: 15px;
+}
+
+.add-category select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 220px;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #1f8a3a;
+}
+
+/* Browse Categories */
+.browse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.browse-card {
+  padding: 20px;
+  background-color: #eef2f7;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.browse-card:hover {
+  background-color: #dfe6ee;
+}
