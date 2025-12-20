@@ -43,7 +43,7 @@ public class AuthController(
         return Unauthorized("Invalid email or password");
     }
     [HttpPost("customer/register")]
-    public async Task<IActionResult> RegisterCustomer([FromBody] CustomerSignUpDto registerDto)
+    public async Task<IActionResult> RegisterCustomer([FromForm] CustomerSignUpDto registerDto)
     {
         Console.WriteLine("REQUEST RECIEVED");
         // Validate the DTO
