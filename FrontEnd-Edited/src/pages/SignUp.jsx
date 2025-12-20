@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 
 export const SignUp = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
-    address: '',
-    email: '',
-    phoneNumber: '',
-    password: '',
-    confirmPassword: ''
+    Name: '',
+    Address: '',
+    Email: '',
+    PhoneNumber: '',
+    Password: '',
+    ConfirmPassword: ''
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -30,13 +30,13 @@ export const SignUp = () => {
     setError('');
     
     // Basic validation
-    if (formData.password !== formData.confirmPassword) {
+    if (formData.Password !== formData.ConfirmPassword) {
       setError('Passwords do not match');
       console.log('Password mismatch');
       return;
     }
 
-    if (formData.password.length < 6) {
+    if (formData.Password.length < 6) {
       setError('Password must be at least 6 characters long');
       console.log('Password too short');
       return;
@@ -47,12 +47,12 @@ export const SignUp = () => {
     try {
       setIsLoading(true);
       const response = await axios.post('http://localhost:5033/api/Auth/customer/register', {
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        confirmPassword: formData.confirmPassword,
-        phoneNumber: formData.phoneNumber,
-        address: formData.address
+        name: formData.Name,
+        email: formData.Email,
+        password: formData.Password,
+        confirmPassword: formData.ConfirmPassword,
+        phoneNumber: formData.PhoneNumber,
+        address: formData.Address
       });
 
       console.log('Response received:', response);
@@ -71,6 +71,7 @@ export const SignUp = () => {
     } catch (err) {
       setError(err.response?.data?.title || 'Registration failed. Please try again.');
       console.error('Registration error:', err);
+      console.log('Response data:', err.response?.data);
     } finally {
       setIsLoading(false);
     }
@@ -98,9 +99,9 @@ export const SignUp = () => {
           </label>
           <input
             type="text"
-            name="name"
+            name="Name"
             placeholder="Enter Your Full Name"
-            value={formData.name}
+            value={formData.Name}
             onChange={handleChange}
             className="form-input"
             required
@@ -114,9 +115,9 @@ export const SignUp = () => {
           </label>
           <input
             type="text"
-            name="address"
+            name="Address"
             placeholder="123 Main St, City, Country"
-            value={formData.address}
+            value={formData.Address}
             onChange={handleChange}
             className="form-input"
             required
@@ -130,9 +131,9 @@ export const SignUp = () => {
           </label>
           <input
             type="email"
-            name="email"
+            name="Email"
             placeholder="Example@gmail.com"
-            value={formData.email}
+            value={formData.Email}
             onChange={handleChange}
             className="form-input"
             required
@@ -155,46 +156,46 @@ export const SignUp = () => {
             </div>
             <input
               type="tel"
-              name="phoneNumber"
+              name="PhoneNumber"
               placeholder="+20_ _ _ _ _"
-              value={formData.phoneNumber}
+              value={formData.PhoneNumber}
               onChange={handleChange}
               className="phone-input"
               required
             />
           </div>
+        </div>
 
-          {/* Password */}
-          <div className="form-group">
-            <label className="form-label">
-              Password<span className="required-star">*</span>
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleChange}
-              className="form-input"
-              required
-            />
-          </div>
+        {/* Password */}
+        <div className="form-group">
+          <label className="form-label">
+            Password<span className="required-star">*</span>
+          </label>
+          <input
+            type="password"
+            name="Password"
+            placeholder="Enter your password"
+            value={formData.Password}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
 
-          {/* Confirm Password */}
-          <div className="form-group">
-            <label className="form-label">
-              Confirm Password<span className="required-star">*</span>
-            </label>
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm your password"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className="form-input"
-              required
-            />
-          </div>
+        {/* Confirm Password */}
+        <div className="form-group">
+          <label className="form-label">
+            Confirm Password<span className="required-star">*</span>
+          </label>
+          <input
+            type="password"
+            name="ConfirmPassword"
+            placeholder="Confirm your password"
+            value={formData.ConfirmPassword}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
         </div>
 
         {/* Error Message */}

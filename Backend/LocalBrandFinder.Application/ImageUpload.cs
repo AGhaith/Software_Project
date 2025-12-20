@@ -34,10 +34,10 @@ public class ImgBBService
 
 public class ImgBBResponse
 {
-    public ImgBBData Data { get; set; }
+    public ImgBBData? Data { get; set; }
 }
 
 public class ImgBBData
 {
-    public string Url { get; set; }
+    public string? Url { get; set; }
 }

@@ -1,5 +1,4 @@
 using LocalBrandFinder.API.DependencyInjection;
-using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +8,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         policy
-            .AllowAnyOrigin()    
+            .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader();
     });
@@ -19,10 +18,15 @@ builder.Services.AddCors(options =>
 builder.Services.AddApiServices(builder.Configuration);
 
 var app = builder.Build();
-app.UseApiDocumentation();
 
+// Use CORS early in the pipeline
+app.UseCors("AllowAll");
+
+app.UseApiDocumentation();
 app.UseHttpsRedirection();
+
 app.MapControllers();
+
 app.Lifetime.ApplicationStarted.Register(() =>
 {
     Console.ForegroundColor = ConsoleColor.White;
@@ -44,9 +48,5 @@ app.Lifetime.ApplicationStarted.Register(() =>
         Console.ResetColor();
     }
 });
-//  Add this BEFORE app.MapControllers()
-app.UseCors("AllowAll");
-
-app.MapControllers();
 
 app.Run();

@@ -1,11 +1,6 @@
 using LocalBrandFinder.Application.Interfaces;
-using LocalBrandFinder.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Needed for Include
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocalBrandFinder.API.Controllers;
 
@@ -22,7 +17,7 @@ public class BrandController : ControllerBase
 
     // PATCH: api/brand/add/{brandId}/categories/{categoryId}
     [HttpPatch("add/{brandId}/categories/{categoryId}")]
-    [Authorize(Roles ="Brand")]
+    [Authorize(Roles = "Brand")]
     public async Task<IActionResult> AddCategoryToBrand(Guid brandId, string categoryName)
     {
         categoryName = categoryName.ToLower();
