@@ -1,35 +1,40 @@
 using FluentValidation;
-using LocalBrandFinder.Application.DTOs.Authentication;
+using LocalBrandFinder.Application;
+using LocalBrandFinder.Application.DTOs;
 using LocalBrandFinder.Application.Interfaces;
-using LocalBrandFinder.Application.Validators;
+using LocalBrandFinder.Application.Interfaces.Utilities;
 using LocalBrandFinder.Domain.Models;
+using LocalBrandFinder.Domain.Models.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Needed for Include
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocalBrandFinder.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-
-
-    public class BrandController : ControllerBase
+public class BrandController : ControllerBase
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IValidator<Brand> _validator; // ashan aaraf a call el validator
+    private readonly IImgBBService _imgBBService;
+    private readonly IValidator<EditBrandDto> _editBrandValidator;
 
-    public BrandController(IUnitOfWork unitOfWork)
+    public BrandController(
+        IUnitOfWork unitOfWork,
+        IImgBBService imgBBService,
+        IValidator<EditBrandDto> editBrandValidator)
     {
-        _ImgBBService = imgBBService;
         _unitOfWork = unitOfWork;
-        _validator = new BrandValidator(_unitOfWork); // ashan aaraf a call el validator
+        _imgBBService = imgBBService;
+        _editBrandValidator = editBrandValidator;
     }
 
-    // PATCH: api/brand/add/{brandId}/categories/{categoryId}
+    [HttpGet("get-all")]
+    public async Task<IActionResult> GetAllBrands()
+    {
+        var brands = await _unitOfWork.Brands.GetAllAsync();
+        return Ok(brands ?? new List<Brand>());
+    }
+
     [HttpPatch("add/{brandId}/categories/{categoryName}")]
     [Authorize(Roles = "Brand")]
     public async Task<IActionResult> AddCategoryToBrand(Guid brandId, string categoryName)
@@ -48,179 +53,121 @@ namespace LocalBrandFinder.API.Controllers;
         if (brand == null)
             return NotFound($"Brand with ID {brandId} not found.");
 
-        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Id == categoryId);
+        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Name.ToLower() == categoryName);
         if (category == null)
-            return NotFound($"Category with ID {categoryId} not found.");
+            return NotFound($"Category '{categoryName}' not found.");
 
-        if (brand.Categories?.Any(c => c.Name.ToLower() == categoryName) ?? false)
+        if (brand.Categories != null && brand.Categories.Any(c => c.Name.ToLower() == categoryName))
             return BadRequest("Category already assigned to this brand.");
 
-        brand.Categories ??= new List<Domain.Models.Category>();
+        brand.Categories ??= new List<Category>();
         brand.Categories.Add(category);
 
         await _unitOfWork.Brands.UpdateAsync(brand);
-        bool r = await _unitOfWork.SaveChangesAsync();
-
-        if (r)
+        if (await _unitOfWork.SaveChangesAsync())
+        {
             return Ok(new
             {
-                message = "Category added to brand successfully.",
-                categories = brand.Categories.Select(c => c.Name).ToList()
+                message = "Category added successfully.",
+                categories = brand.Categories.Select(c => c.Name)
             });
+        }
 
-        return BadRequest(new { message = "Failed to add category." });
+        return BadRequest("Failed to add category.");
     }
 
     [HttpGet("has-category/{categoryName}")]
     public async Task<IActionResult> GetBrandsByCategory(string categoryName)
     {
-        if (string.IsNullOrWhiteSpace(categoryName))
-            return BadRequest("Category name is required.");
-
         var categories = await _unitOfWork.Categories.GetAsync(
             c => c.Name.ToLower() == categoryName.ToLower(),
             includeString: "Brands"
         );
 
-        var category = categories?.FirstOrDefault(); // safe
-        if (category == null)
-            return NotFound($"Category '{categoryName}' not found.");
+        var category = categories?.FirstOrDefault();
+        if (category == null) return NotFound();
 
-        var brands = category.Brands?.Select(b => new { b.Id, b.Name }) ?? Enumerable.Empty<object>();
-
-
-
-
-        return Ok(brands);
+        var result = category.Brands?.Select(b => new { b.Id, b.Name }) ?? Enumerable.Empty<object>();
+        return Ok(result);
     }
 
     [HttpGet("search/{brandName}")]
     public async Task<IActionResult> SearchBrand(string brandName)
     {
-        if (string.IsNullOrWhiteSpace(brandName))
-            return BadRequest("Brand name is required.");
-
         var brands = await _unitOfWork.Brands.GetAsync(
-            b => b.Name.ToLower().Contains(brandName.ToLower())
+            b => b.Name.ToLower().Contains(brandName.ToLower()),
+            includeString: "Categories"
         );
-        var brand = brands.FirstOrDefault();
 
         if (brands == null || !brands.Any())
-            return NotFound($"No brands found matching '{brandName}'.");
-        
-        var result = brands.Select(b => new
-        {
+            return NotFound();
+
+        return Ok(brands.Select(b => new {
             b.Id,
             b.Name,
-            Categories = b.Categories ?? new List<Domain.Models.Category>(),
             b.LogoUrl,
             b.WebsiteUrl,
             b.Description,
-        });
-
-        return Ok(result);
-    }
-    [HttpPost("Add-Product/{brandId}/")]
-    [Authorize(Roles = "Brand")]   
-    public async Task<IActionResult> AddProductToBrand(Guid brandId, CreateProductDTO product)
-    {
-
-        var brandList = await _unitOfWork.Brands.GetAsync(
-            b => b.Id == brandId
-        );
-        var brand = brandList.FirstOrDefault();
-        brand.Products.Add(product);
-        await _unitOfWork.Brands.UpdateAsync(brand);
-        bool r = await _unitOfWork.SaveChangesAsync();
-        if (r)
-            return Ok(new
-            {
-                message = "Product added to brand successfully.",
-                product = brand.Products.Select(c => c.Name).ToList()
-            });
-
-    [HttpGet("get-all")]
-    public async Task<IActionResult> GetAllBrands()
-    {
-        var brands = await _unitOfWork.Brands.GetAllAsync() ?? new List<Domain.Models.Brand>();
-        return Ok(brands);
+            Categories = b.Categories?.Select(c => c.Name)
+        }));
     }
 
-        brand.Products.Add(product);
-        await _unitOfWork.Brands.UpdateAsync(brand);
-        bool r = await _unitOfWork.SaveChangesAsync();
+    [HttpPost("Add-Product/{brandId}")]
+    [Authorize(Roles = "Brand")]
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, [FromBody] CreateProductDTO productDto)
+    {
+        var brand = await _unitOfWork.Brands.GetSingleAsync(b => b.Id == brandId);
+        if (brand == null) return NotFound("Brand not found.");
 
-        if (r)
-            return Ok(new
-            {
-                message = "Product added to brand successfully.",
-                products = p,
-            });
+        var newProduct = new Product
+        {
+            Name = productDto.Name,
+            Price = productDto.Price,
+            BrandId = brandId,
+            Description = productDto.Description,
+            AvailableSizes = productDto.AvailableSizes,
+            AvailableStock = productDto.AvailableStock,
+            Type = productDto.Type,
+        };
 
+        await _unitOfWork.Products.AddAsync(newProduct);
+        if (await _unitOfWork.SaveChangesAsync())
+            return Ok(new { message = "Product added successfully." });
 
+        return BadRequest("Failed to add product.");
+    }
 
-    [HttpPatch("brands/{id}")]
-
+    [HttpPatch("edit/{id}")]
+    [Authorize(Roles = "Brand")]
     public async Task<IActionResult> EditBrand(Guid id, [FromForm] EditBrandDto request)
     {
-
-        var validationResult = await _validator.ValidateAsync((IValidationContext)request);
-
+        var validationResult = await _editBrandValidator.ValidateAsync(request);
         if (!validationResult.IsValid)
             return BadRequest(validationResult.Errors);
 
         var brand = await _unitOfWork.Brands.GetSingleAsync(b => b.Id == id);
-        if (brand == null)
-            return NotFound();
+        if (brand == null) return NotFound();
 
-        if (!string.IsNullOrEmpty(request.Tags))
-            brand.Tags = request.Tags;
+        // Update fields if provided
+        if (!string.IsNullOrEmpty(request.Description)) brand.Description = request.Description;
+        if (!string.IsNullOrEmpty(request.WebsiteUrl)) brand.WebsiteUrl = request.WebsiteUrl;
+        if (!string.IsNullOrEmpty(request.PhoneNumber)) brand.PhoneNumber = request.PhoneNumber;
+        if (!string.IsNullOrEmpty(request.Address)) brand.Address = request.Address;
+        if (!string.IsNullOrEmpty(request.Tags)) brand.Tags = request.Tags;
 
-        if (!string.IsNullOrEmpty(request.Description))
-            brand.Description = request.Description;
-
-        if( request.Logo != null)
+        if (request.Logo != null)
         {
-            var logoUrl = await UploadLogoAsync(request.Logo);
-            brand.LogoUrl = logoUrl;
+            brand.LogoUrl = await _imgBBService.UploadAsync(request.Logo);
         }
-
-
-        if (!string.IsNullOrEmpty(request.WebsiteUrl))
-            brand.WebsiteUrl = request.WebsiteUrl;
-
-        if (!string.IsNullOrEmpty(request.PhoneNumber))
-            brand.PhoneNumber = request.PhoneNumber;
-
-        if (!string.IsNullOrEmpty(request.Address))
-            brand.Address = request.Address;
-
-        
 
         await _unitOfWork.SaveChangesAsync();
         return Ok(brand);
     }
 
-    private async Task<string> UploadLogoAsync(IFormFile logo)
-    {
-        throw new NotImplementedException();
-    }
-
-    [HttpGet("GetProductsFromBrand/{brandId}/")]
+    [HttpGet("GetProductsFromBrand/{brandId}")]
     public async Task<IActionResult> GetProductsFromBrand(Guid brandId)
     {
-
-        var ProductList = await _unitOfWork.Products.GetAsync(
-            b => b.BrandId == brandId
-        );
-        if (ProductList == null)
-            return NotFound($"Brand with ID {brandId} not found.");
-       
-        return Ok(ProductList);
+        var products = await _unitOfWork.Products.GetAsync(p => p.BrandId == brandId);
+        return Ok(products ?? new List<Product>());
     }
-
-
 }
-
-
-

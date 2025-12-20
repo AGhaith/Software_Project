@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
+using LocalBrandFinder.Application.DTOs;
 using LocalBrandFinder.Application.Interfaces;
 using LocalBrandFinder.Domain.Models;
 using System;
 
-public class BrandValidator : AbstractValidator<Brand>
+public class BrandValidator : AbstractValidator<EditBrandDto>
 {
     private IUnitOfWork unitOfWork;
 
@@ -19,12 +20,6 @@ public class BrandValidator : AbstractValidator<Brand>
             .MaximumLength(300)
             .WithMessage("Description must not exceed 300 characters.")
             .When(x => !string.IsNullOrWhiteSpace(x.Description));
-
-        //logo URL validation
-        RuleFor(x => x.LogoUrl)
-            .Must(BeValidUrl)
-            .When(x => !string.IsNullOrWhiteSpace(x.LogoUrl))
-            .WithMessage("LogoUrl must be a valid URL.");
 
         //website URL validation
         RuleFor(x => x.WebsiteUrl)
@@ -50,8 +45,4 @@ public class BrandValidator : AbstractValidator<Brand>
         this.unitOfWork = unitOfWork;
     }
 
-    private bool BeValidUrl(string url)
-    {
-        return Uri.TryCreate(url, UriKind.Absolute, out _);
-    }
 }
