@@ -22,13 +22,13 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Restore dependencies
-        run: dotnet restore ..\..\Backend\LocalBrandFinder.sln
+        run: dotnet restore .\Backend\LocalBrandFinder.sln
 
       - name: Build solution
-        run: dotnet build ..\..\Backend\LocalBrandFinder.sln --no-restore --configuration Debug
+        run: dotnet build .\Backend\LocalBrandFinder.sln --no-restore --configuration Debug
 
       - name: Run tests with logger
-        run: dotnet test ..\..\Backend\LocalBrandFinder.sln --no-build --verbosity normal --logger "trx;LogFileName=test_results.trx"
+        run: dotnet test .\Backend\LocalBrandFinder.sln --no-build --verbosity normal --logger "trx;LogFileName=test_results.trx"
 
       - name: Publish Test Results
         if: always()
