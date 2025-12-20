@@ -23,6 +23,7 @@ public class BrandController : ControllerBase
         IImgBBService imgBBService,
         IValidator<EditBrandDto> editBrandValidator)
     {
+        _ImgBBService = imgBBService;
         _unitOfWork = unitOfWork;
         _imgBBService = imgBBService;
         _editBrandValidator = editBrandValidator;
@@ -53,7 +54,7 @@ public class BrandController : ControllerBase
         if (brand == null)
             return NotFound($"Brand with ID {brandId} not found.");
 
-        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Name.ToLower() == categoryName);
+        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Id == categoryId);
         if (category == null)
             return NotFound($"Category '{categoryName}' not found.");
 
@@ -98,6 +99,7 @@ public class BrandController : ControllerBase
             b => b.Name.ToLower().Contains(brandName.ToLower()),
             includeString: "Categories"
         );
+        var brand = brands.FirstOrDefault();
 
         if (brands == null || !brands.Any())
             return NotFound();
@@ -136,6 +138,45 @@ public class BrandController : ControllerBase
 
         return BadRequest("Failed to add product.");
     }
+    [HttpPost("Add-Product/{brandId}/")]
+    [Authorize(Roles = "Brand")]   
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, CreateProductDTO product)
+    {
+
+        var brandList = await _unitOfWork.Brands.GetAsync(
+            b => b.Id == brandId
+        );
+        var brand = brandList.FirstOrDefault();
+
+        if (brand == null)
+            return NotFound($"Brand with ID {brandId} not found.");
+        List<String> Urls = new List<String>();
+        if (product.Images != null)
+        {
+            foreach (IFormFile image in product.Images)
+            {
+                if (image.Length == 0)
+                    continue;
+                var url = await _ImgBBService.UploadAsync(image);
+                Urls.Add(url);
+            }
+        }
+
+
+
+        Product p = new Product
+        {
+            Id = Guid.NewGuid(),
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            AvailableStock = product.AvailableStock,
+            AvailableSizes = product.AvailableSizes,
+            Type = product.Type,
+            Images = Urls,
+        };
+
+        brand.Products.Add(p);
 
     [HttpPatch("edit/{id}")]
     [Authorize(Roles = "Brand")]
