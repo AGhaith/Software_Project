@@ -1,9 +1,13 @@
+using FluentValidation;
+using LocalBrandFinder.Application.DTOs.Authentication;
 using LocalBrandFinder.Application.Interfaces;
+using LocalBrandFinder.Application.Validators;
 using LocalBrandFinder.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore; // Needed for Include
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,13 +15,17 @@ namespace LocalBrandFinder.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BrandController : ControllerBase
+
+
+    public class BrandController : ControllerBase
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IValidator<Brand> _validator; // ashan aaraf a call el validator
 
     public BrandController(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
+        _validator = new BrandValidator(_unitOfWork); // ashan aaraf a call el validator
     }
 
     // PATCH: api/brand/add/{brandId}/categories/{categoryId}
@@ -114,4 +122,56 @@ public class BrandController : ControllerBase
         return Ok(brands);
     }
 
+
+
+
+    [HttpPatch("brands/{id}")]
+
+    public async Task<IActionResult> EditBrand(Guid id, [FromForm] EditBrandDto request)
+    {
+
+        var validationResult = await _validator.ValidateAsync((IValidationContext)request);
+
+        if (!validationResult.IsValid)
+            return BadRequest(validationResult.Errors);
+
+        var brand = await _unitOfWork.Brands.GetSingleAsync(b => b.Id == id);
+        if (brand == null)
+            return NotFound();
+
+        if (!string.IsNullOrEmpty(request.Tags))
+            brand.Tags = request.Tags;
+
+        if (!string.IsNullOrEmpty(request.Description))
+            brand.Description = request.Description;
+
+        if( request.Logo != null)
+        {
+            var logoUrl = await UploadLogoAsync(request.Logo);
+            brand.LogoUrl = logoUrl;
+        }
+
+
+        if (!string.IsNullOrEmpty(request.WebsiteUrl))
+            brand.WebsiteUrl = request.WebsiteUrl;
+
+        if (!string.IsNullOrEmpty(request.PhoneNumber))
+            brand.PhoneNumber = request.PhoneNumber;
+
+        if (!string.IsNullOrEmpty(request.Address))
+            brand.Address = request.Address;
+
+        
+
+        await _unitOfWork.SaveChangesAsync();
+        return Ok(brand);
+    }
+
+    private async Task<string> UploadLogoAsync(IFormFile logo)
+    {
+        throw new NotImplementedException();
+    }
 }
+
+
+

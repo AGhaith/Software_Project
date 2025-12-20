@@ -5,4 +5,6 @@ namespace LocalBrandFinder.Application.Interfaces;
 
 public interface IBrandRepository : IBaseRepository<Brand>
 {
+
 }
+
