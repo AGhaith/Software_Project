@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using LocalBrandFinder.Application.Interfaces.Utilities;
+using Microsoft.AspNetCore.Identity;
 
 namespace LocalBrandFinder.Application.Utilities;
 
-public class PasswordUtility
+public class PasswordUtility : IPasswordUtility
 {
     private readonly IPasswordHasher<object> _hasher;
 

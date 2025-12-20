@@ -1,0 +1,73 @@
+.profile-container {
+  padding: 40px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* Section Styling */
+.profile-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-section h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Form Fields */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Save Button */
+.save-section {
+  text-align: right;
+}
+
+.save-btn {
+  padding: 12px 28px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #0056b3;
+}

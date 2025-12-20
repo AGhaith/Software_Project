@@ -1,0 +1,38 @@
+name: .NET CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore .\Backend\LocalBrandFinder.sln
+
+      - name: Build solution
+        run: dotnet build .\Backend\LocalBrandFinder.sln --no-restore --configuration Debug
+
+      - name: Run tests with logger
+        run: dotnet test .\Backend\LocalBrandFinder.sln --no-build --verbosity normal --logger "trx;LogFileName=test_results.trx"
+
+      - name: Publish Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: "**/test_results.trx"

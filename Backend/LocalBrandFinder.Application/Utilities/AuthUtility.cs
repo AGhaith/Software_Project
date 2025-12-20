@@ -1,4 +1,5 @@
-﻿using LocalBrandFinder.Domain.Models;
+﻿using LocalBrandFinder.Application.Interfaces.Utilities;
+using LocalBrandFinder.Domain.Models;
 using LocalBrandFinder.Domain.Models.Common;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -7,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 namespace LocalBrandFinder.Application.Utilities
 {
-    public class AuthUtility(IConfiguration configuration)
+    public class AuthUtility(IConfiguration configuration) : IAuthUtility
     {
         public string CreateToken(BaseUser user)
         {

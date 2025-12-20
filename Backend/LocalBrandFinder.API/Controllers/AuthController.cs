@@ -3,12 +3,11 @@ using FluentValidation.Results;
 using LocalBrandFinder.Application;
 using LocalBrandFinder.Application.DTOs.Authentication;
 using LocalBrandFinder.Application.Interfaces;
+using LocalBrandFinder.Application.Interfaces.Utilities;
 using LocalBrandFinder.Application.Utilities;
 using LocalBrandFinder.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocalBrandFinder.API.Controllers;
 
@@ -16,15 +15,14 @@ namespace LocalBrandFinder.API.Controllers;
 [Route("api/[controller]")]
 public class AuthController(
     IUnitOfWork _unitOfWork,
-    PasswordUtility _passwordUtility,
-    AuthUtility _authUtility,
+    IPasswordUtility _passwordUtility,
+    IAuthUtility _authUtility,
     IValidator<CustomerSignUpDto> _customerValidator,
     IValidator<BrandSignUpDto> _brandValidator,
-    ImgBBService _imgBB
-) : ControllerBase
+    IImgBBService _imgBB) : ControllerBase
 {
     [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginRequestDto loginDto)
+    public async Task<IActionResult> Login([FromBody]LoginRequestDto loginDto)
     {
         var customer = await _unitOfWork.Customers.GetSingleAsync(c => c.Email == loginDto.Email);
 
@@ -45,13 +43,16 @@ public class AuthController(
         return Unauthorized("Invalid email or password");
     }
     [HttpPost("customer/register")]
-    public async Task<IActionResult> RegisterCustomer([FromForm] CustomerSignUpDto registerDto)
+    public async Task<IActionResult> RegisterCustomer([FromBody] CustomerSignUpDto registerDto)
     {
+        Console.WriteLine("REQUEST RECIEVED");
         // Validate the DTO
         ValidationResult validation = await _customerValidator.ValidateAsync(registerDto);
         if (!validation.IsValid)
+        {
+            Console.WriteLine("EROOROROR");
             return BadRequest(validation.Errors.Select(e => e.ErrorMessage));
-
+        }
         // Create the customer object
         var customer = new Customer
         {
@@ -68,10 +69,13 @@ public class AuthController(
         {
             var url = await _imgBB.UploadAsync(pfp); // Your image upload service
             customer.pfpLink = url;
+        }else
+        {
+            customer.pfpLink = null;
         }
 
-        // Save to database
-        bool added = await _unitOfWork.Customers.AddAsync(customer);
+            // Save to database
+            bool added = await _unitOfWork.Customers.AddAsync(customer);
         bool saved = await _unitOfWork.SaveChangesAsync();
 
         if (added && saved)
