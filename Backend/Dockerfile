@@ -17,4 +17,5 @@ EXPOSE 5033
 ENV ASPNETCORE_URLS=http://+:5033
 
 # The command to run the API project using 'dotnet run'
+# CI TEST
 CMD ["dotnet", "run", "--urls", "http://0.0.0.0:5033"]
