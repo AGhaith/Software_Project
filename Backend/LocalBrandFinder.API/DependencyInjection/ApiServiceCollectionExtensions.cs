@@ -1,4 +1,6 @@
+using LocalBrandFinder.Application;
 using LocalBrandFinder.Application.DependencyInjection;
+using LocalBrandFinder.Application.Interfaces.Utilities;
 using LocalBrandFinder.Application.Utilities;
 using LocalBrandFinder.Domain.Models.Common;
 using LocalBrandFinder.Infrastructure.DependencyInjection;
@@ -16,6 +18,9 @@ public static class ApiServiceCollectionExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddScoped<IPasswordUtility, PasswordUtility>();
+        services.AddScoped<IAuthUtility, AuthUtility>();
+        services.AddScoped<IImgBBService, ImgBBService>();
         services.AddApplicationServices();
         services.AddInfrastructureServices(configuration);
 

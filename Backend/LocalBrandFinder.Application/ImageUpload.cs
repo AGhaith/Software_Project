@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LocalBrandFinder.Application.Interfaces.Utilities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Json;
 namespace LocalBrandFinder.Application;
-public class ImgBBService
+public class ImgBBService : IImgBBService
 {
     private readonly string _apiKey;
     private readonly HttpClient _httpClient;

@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocalBrandFinder.Application;
 using LocalBrandFinder.Application.DTOs.Authentication;
 using LocalBrandFinder.Application.Interfaces;
+using LocalBrandFinder.Application.Interfaces.Utilities;
 using LocalBrandFinder.Application.Utilities;
 using LocalBrandFinder.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -14,12 +15,11 @@ namespace LocalBrandFinder.API.Controllers;
 [Route("api/[controller]")]
 public class AuthController(
     IUnitOfWork _unitOfWork,
-    PasswordUtility _passwordUtility,
-    AuthUtility _authUtility,
+    IPasswordUtility _passwordUtility,
+    IAuthUtility _authUtility,
     IValidator<CustomerSignUpDto> _customerValidator,
     IValidator<BrandSignUpDto> _brandValidator,
-    ImgBBService _imgBB
-) : ControllerBase
+    IImgBBService _imgBB) : ControllerBase
 {
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody]LoginRequestDto loginDto)
