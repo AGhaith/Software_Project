@@ -52,10 +52,8 @@ public static class ApiServiceCollectionExtensions
 
     public static void UseApiDocumentation(this WebApplication app)
     {
-        if (app.Environment.IsDevelopment())
-        {
+
             app.MapOpenApi();
             app.MapScalarApiReference();
-        }
     }
 }

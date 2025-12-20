@@ -1,21 +1,27 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:9.0 AS development
-WORKDIR /src
+﻿# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /app
 
-# Copy everything necessary to resolve projects
-# This copies all the code and the .sln file, preserving the folder structure.
-COPY . .
+# Copy solution and all projects
+COPY ./LocalBrandFinder.sln ./
+COPY ./LocalBrandFinder.API ./LocalBrandFinder.API
+COPY ./LocalBrandFinder.Application ./LocalBrandFinder.Application
+COPY ./LocalBrandFinder.Domain ./LocalBrandFinder.Domain
+COPY ./LocalBrandFinder.Infrastructure ./LocalBrandFinder.Infrastructure
+COPY ./TestProject1 ./TestProject1  
 
-# Run restore on the solution file
+# Restore dependencies
 RUN dotnet restore LocalBrandFinder.sln
 
-# Set the working directory to the API project folder
-WORKDIR /src/LocalBrandFinder.API
+# Publish API project
+RUN dotnet publish LocalBrandFinder.API/LocalBrandFinder.API.csproj -c Release -o /app/publish
+
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+WORKDIR /app
+
+COPY --from=build /app/publish .
 
 EXPOSE 5033
-
-# Environment variables
 ENV ASPNETCORE_URLS=http://+:5033
-
-# The command to run the API project using 'dotnet run'
-# CI TEST
-CMD ["dotnet", "run", "--urls", "http://0.0.0.0:5033"]
+ENTRYPOINT ["dotnet", "LocalBrandFinder.API.dll"]
