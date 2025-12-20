@@ -15,7 +15,7 @@ namespace LocalBrandFinder.API.Controllers;
 public class BrandController : ControllerBase
 {
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IImgBBService _imgBBService;
+    private readonly IImgBBService _ImgBBService;
     private readonly IValidator<EditBrandDto> _editBrandValidator;
 
     public BrandController(
@@ -25,7 +25,6 @@ public class BrandController : ControllerBase
     {
         _ImgBBService = imgBBService;
         _unitOfWork = unitOfWork;
-        _imgBBService = imgBBService;
         _editBrandValidator = editBrandValidator;
     }
 
@@ -54,9 +53,9 @@ public class BrandController : ControllerBase
         if (brand == null)
             return NotFound($"Brand with ID {brandId} not found.");
 
-        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Id == categoryId);
+        var category = await _unitOfWork.Categories.GetSingleAsync(c => c.Name == categoryName);
         if (category == null)
-            return NotFound($"Category '{categoryName}' not found.");
+            return NotFound($"Category Name : '{categoryName}' not found.");
 
         if (brand.Categories != null && brand.Categories.Any(c => c.Name.ToLower() == categoryName))
             return BadRequest("Category already assigned to this brand.");
@@ -113,71 +112,60 @@ public class BrandController : ControllerBase
             Categories = b.Categories?.Select(c => c.Name)
         }));
     }
-
     [HttpPost("Add-Product/{brandId}")]
     [Authorize(Roles = "Brand")]
-    public async Task<IActionResult> AddProductToBrand(Guid brandId, [FromBody] CreateProductDTO productDto)
+    public async Task<IActionResult> AddProductToBrand(Guid brandId, [FromForm] CreateProductDTO productDto)
     {
-        var brand = await _unitOfWork.Brands.GetSingleAsync(b => b.Id == brandId);
-        if (brand == null) return NotFound("Brand not found.");
-
-        var newProduct = new Product
-        {
-            Name = productDto.Name,
-            Price = productDto.Price,
-            BrandId = brandId,
-            Description = productDto.Description,
-            AvailableSizes = productDto.AvailableSizes,
-            AvailableStock = productDto.AvailableStock,
-            Type = productDto.Type,
-        };
-
-        await _unitOfWork.Products.AddAsync(newProduct);
-        if (await _unitOfWork.SaveChangesAsync())
-            return Ok(new { message = "Product added successfully." });
-
-        return BadRequest("Failed to add product.");
-    }
-    [HttpPost("Add-Product/{brandId}/")]
-    [Authorize(Roles = "Brand")]   
-    public async Task<IActionResult> AddProductToBrand(Guid brandId, CreateProductDTO product)
-    {
-
-        var brandList = await _unitOfWork.Brands.GetAsync(
-            b => b.Id == brandId
-        );
-        var brand = brandList.FirstOrDefault();
+        var brandList = await _unitOfWork.Brands.GetAsync(b => b.Id == brandId, includeString: "Products");
+        var brand = brandList?.FirstOrDefault();
 
         if (brand == null)
             return NotFound($"Brand with ID {brandId} not found.");
-        List<String> Urls = new List<String>();
-        if (product.Images != null)
+
+        // 2. Handle Image Uploads
+        List<string> imageUrls = new List<string>();
+        if (productDto.Images != null && productDto.Images.Any())
         {
-            foreach (IFormFile image in product.Images)
+            foreach (var image in productDto.Images)
             {
-                if (image.Length == 0)
-                    continue;
-                var url = await _ImgBBService.UploadAsync(image);
-                Urls.Add(url);
+                if (image.Length > 0)
+                {
+                    var url = await _ImgBBService.UploadAsync(image);
+                    imageUrls.Add(url);
+                }
             }
         }
 
-
-
-        Product p = new Product
+        var newProduct = new Product
         {
             Id = Guid.NewGuid(),
-            Name = product.Name,
-            Price = product.Price,
-            Description = product.Description,
-            AvailableStock = product.AvailableStock,
-            AvailableSizes = product.AvailableSizes,
-            Type = product.Type,
-            Images = Urls,
+            Name = productDto.Name,
+            Price = productDto.Price,
+            Description = productDto.Description,
+            AvailableStock = productDto.AvailableStock,
+            AvailableSizes = productDto.AvailableSizes,
+            Type = productDto.Type,
+            BrandId = brandId,
+            Images = imageUrls 
         };
 
-        brand.Products.Add(p);
+        brand.Products ??= new List<Product>();
+        brand.Products.Add(newProduct);
 
+        await _unitOfWork.Brands.UpdateAsync(brand);
+        bool success = await _unitOfWork.SaveChangesAsync();
+
+        if (success)
+        {
+            return Ok(new
+            {
+                message = "Product added successfully.",
+                productId = newProduct.Id
+            });
+        }
+
+        return BadRequest("Failed to save the product.");
+    }
     [HttpPatch("edit/{id}")]
     [Authorize(Roles = "Brand")]
     public async Task<IActionResult> EditBrand(Guid id, [FromForm] EditBrandDto request)
@@ -198,7 +186,7 @@ public class BrandController : ControllerBase
 
         if (request.Logo != null)
         {
-            brand.LogoUrl = await _imgBBService.UploadAsync(request.Logo);
+            brand.LogoUrl = await _ImgBBService.UploadAsync(request.Logo);
         }
 
         await _unitOfWork.SaveChangesAsync();
