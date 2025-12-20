@@ -93,3 +93,6 @@ obj/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+*.cmd
+/local_brands/node_modules
