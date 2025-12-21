@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 import "./BrandDetail.css";
 
 export default function BrandDetail() {
   const categories = ["Food", "Organic", "Local Crafts"];
 
   return (
-    <div className="brand-detail-container">
+    <div className="brand-detail-page">
+      <Navbar />
+      <div className="brand-detail-container">
       {/* Header */}
       <div className="brand-header">
         <img
@@ -72,6 +76,8 @@ export default function BrandDetail() {
         <h2>Customer Reviews</h2>
         <p className="coming-soon">⭐ Reviews coming soon</p>
       </section>
+      </div>
+      <Footer showCTA={false} />
     </div>
   );
 }

@@ -13,7 +13,8 @@ export const RegisterBrand = () => {
     description: '',
     phoneNumber: '',
     address: '',
-    logoUrl: ''
+    websiteUrl: '',
+    logo: null
   });
 
   const [errors, setErrors] = useState({});
@@ -33,6 +34,14 @@ export const RegisterBrand = () => {
         [name]: ''
       }));
     }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData(prev => ({
+      ...prev,
+      logo: file
+    }));
   };
 
   const validateForm = () => {
@@ -82,13 +91,7 @@ export const RegisterBrand = () => {
       newErrors.phoneNumber = 'Phone number must be valid and contain 10–15 digits';
     }
     
-    if (formData.logoUrl && formData.logoUrl.trim()) {
-      try {
-        new URL(formData.logoUrl);
-      } catch {
-        newErrors.logoUrl = 'Logo URL must be a valid link';
-      }
-    }
+    // Logo is optional file, no validation needed here
     
     return newErrors;
   };
@@ -105,15 +108,23 @@ export const RegisterBrand = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await axios.post('http://localhost:5033/api/Auth/brand/register', {
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        confirmPassword: formData.confirmPassword,
-        description: formData.description || '',
-        phoneNumber: formData.phoneNumber || '',
-        address: formData.address || '',
-        logoUrl: formData.logoUrl || ''
+      const formDataToSend = new FormData();
+      formDataToSend.append('Name', formData.name);
+      formDataToSend.append('Email', formData.email);
+      formDataToSend.append('Password', formData.password);
+      formDataToSend.append('ConfirmPassword', formData.confirmPassword);
+      formDataToSend.append('Description', formData.description || '');
+      formDataToSend.append('PhoneNumber', formData.phoneNumber || '');
+      formDataToSend.append('Address', formData.address || '');
+      formDataToSend.append('WebsiteUrl', formData.websiteUrl || '');
+      if (formData.logo) {
+        formDataToSend.append('Logo', formData.logo);
+      }
+
+      const response = await axios.post('http://localhost:5033/api/Auth/brand/register', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
       console.log('Registration response:', response.data);
@@ -134,7 +145,8 @@ export const RegisterBrand = () => {
         description: '',
         phoneNumber: '',
         address: '',
-        logoUrl: ''
+        websiteUrl: '',
+        logo: null
       });
       
       // Show success message
@@ -315,19 +327,26 @@ export const RegisterBrand = () => {
             </div>
 
             <div className="register-brand-form-group">
-              <label htmlFor="logoUrl">Logo URL</label>
+              <label htmlFor="websiteUrl">Website URL</label>
               <input
                 type="url"
-                id="logoUrl"
-                name="logoUrl"
-                placeholder="https://example.com/logo.png"
-                value={formData.logoUrl}
+                id="websiteUrl"
+                name="websiteUrl"
+                placeholder="https://yourwebsite.com"
+                value={formData.websiteUrl}
                 onChange={handleChange}
-                className={errors.logoUrl ? 'error' : ''}
               />
-              {errors.logoUrl && (
-                <div className="error-message">{errors.logoUrl}</div>
-              )}
+            </div>
+
+            <div className="register-brand-form-group">
+              <label htmlFor="logo">Logo</label>
+              <input
+                type="file"
+                id="logo"
+                name="logo"
+                accept="image/*"
+                onChange={handleFileChange}
+              />
             </div>
 
             <button 

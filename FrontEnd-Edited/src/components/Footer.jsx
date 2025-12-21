@@ -30,24 +30,25 @@ const footerLinks = [
   { label: "Contact Us", href: "#" },
 ];
 
-export const Footer = () => {
+export const Footer = ({ showCTA = true }) => {
   return (
     <>
-      <section className="cta-section">
-        <img
-          className="cta-vector"
-          alt="Vector"
-          src="https://c.animaapp.com/mijkxqh6XSKe3B/img/vector-4.svg"
-        />
-
-        <div className="cta-heading-container">
+      {showCTA && (
+        <section className="cta-section">
           <img
-            className="cta-line cta-line-left"
-            alt="Line"
-            src="https://c.animaapp.com/mijkxqh6XSKe3B/img/line-3.svg"
+            className="cta-vector"
+            alt="Vector"
+            src="https://c.animaapp.com/mijkxqh6XSKe3B/img/vector-4.svg"
           />
-          <h2 className="cta-heading animate-fade-in animate-delay">
-            Now You Can
+
+          <div className="cta-heading-container">
+            <img
+              className="cta-line cta-line-left"
+              alt="Line"
+              src="https://c.animaapp.com/mijkxqh6XSKe3B/img/line-3.svg"
+            />
+            <h2 className="cta-heading animate-fade-in animate-delay">
+              Now You Can
           </h2>
           <img
             className="cta-line cta-line-right"
@@ -80,19 +81,30 @@ export const Footer = () => {
           ))}
         </div>
       </section>
+      )}
 
       <footer className="footer">
-        <nav className="footer-nav">
-          {footerLinks.map((link, index) => (
-            <a key={index} href={link.href} className="footer-link">
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        <div className="footer-wrapper">
+        <div className="footer-content">
+          <div className="footer-links">
+            <a href="#contact" className="footer-link">Contact Us</a>
+            <a href="#privacy" className="footer-link">Privacy Policy</a>
+            <a href="#terms" className="footer-link">Terms and Conditions</a>
+          </div>
 
-        <div className="footer-social">Follow us on</div>
+          <div className="footer-social-section">
+            <div className="footer-follow">Follow Us On</div>
+            <div className="footer-social">
+              <img
+                alt="Social Media"
+                src="https://c.animaapp.com/mjca9475OOuFH8/img/group-6.png"
+              />
+            </div>
+          </div>
 
-        <div className="footer-copyright">©2025 localo.com</div>
+          <div className="footer-copyright">©2025 localo.com</div>
+        </div>
+      </div>
       </footer>
     </>
   );

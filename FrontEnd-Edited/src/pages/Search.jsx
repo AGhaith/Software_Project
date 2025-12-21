@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search as SearchIcon, Heart, ShoppingCart, ChevronDown, SlidersHorizontal } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
 import './Search.css';
 
 const categories = [
@@ -159,6 +160,7 @@ export const Search = () => {
           </button>
         </div>
       </main>
+      <Footer showCTA={false} />
     </div>
   );
 };

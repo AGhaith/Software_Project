@@ -1,6 +1,7 @@
 .cta-section {
   position: relative;
-  margin-top: 200px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .cta-vector {
@@ -108,28 +109,47 @@
 .cta-button:hover {
   background: #e67700;
 }
-
+/* Footer Styles - Fixed width with rotated background */
 .footer {
   width: 100%;
   margin-top: auto;
   overflow: hidden;
   position: relative;
-  height: 200px;
+}
+
+.footer-wrapper {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10%;
+  right: -10%;
+  height: 100%;
   background: linear-gradient(
     90deg,
     rgba(214, 214, 255, 1) 0%,
     rgba(255, 133, 0, 0.65) 100%
   );
   transform-origin: center;
+  z-index: 1;
 }
 
-.footer-nav {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+.footer-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
   display: flex;
-  gap: 50px;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  height: 100%;
+  justify-content: center;
 }
 
 .footer-links {
@@ -140,18 +160,30 @@
 }
 
 .footer-link {
-  font-family: 'Akatab', Helvetica;
+  color: #000000;
+  font-family: "Akatab", Helvetica;
+  font-size: 20px;
   font-weight: 500;
-  color: #fcfcfc;
-  font-size: 24px;
-  text-align: center;
-  text-decoration: underline;
-  cursor: pointer;
-  transition: opacity 0.3s;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 3px;
+  transition: all 0.3s ease;
 }
 
-.footer-link:hover {
-  opacity: 0.7;
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000000;
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+  background-color: #613302;
 }
 
 .footer-social-section {
@@ -171,24 +203,48 @@
 }
 
 .footer-social {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Akatab', Helvetica;
-  font-weight: 900;
-  color: white;
-  font-size: 36px;
-  text-align: center;
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.footer-social:hover {
+  transform: scale(1.05);
+}
+
+.footer-social img {
+  width: 100%;
+  height: auto;
 }
 
 .footer-copyright {
-  position: absolute;
-  bottom: 50px;
-  right: 50px;
   color: #423a3a;
-  font-family: 'Akatab', Helvetica;
-  font-weight: 450;
-  font-size: 24px;
+  font-family: "Akatab", Helvetica;
+  font-size: 18px;
+  font-weight: 600;
   text-align: center;
+  margin-top: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .footer-wrapper {
+    height: 280px;
+  }
 }

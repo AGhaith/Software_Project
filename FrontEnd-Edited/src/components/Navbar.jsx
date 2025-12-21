@@ -5,7 +5,7 @@ import "./Navbar.css";
 
 const navItems = [
   { label: "Home", href: "/", isLink: true },
-  { label: "Categories", href: "/categories", isLink: true },
+  { label: "Brands", href: "/brand", isLink: true },
   { label: "Search", href: "/search", isLink: true },
   { label: "About", href: "#about", isLink: false },
 ];
@@ -13,6 +13,18 @@ const navItems = [
 export const Navbar = () => {
   const navigate = useNavigate();
   const isLoggedIn = !!localStorage.getItem('token');
+  const role = localStorage.getItem('role');
+
+  const handleProfileClick = () => {
+    if (role === 'Customer') {
+      navigate('/customer-profile');
+    } else if (role === 'Brand') {
+      navigate('/brand-profile');
+    } else {
+      // Fallback
+      navigate('/customer-profile');
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -42,7 +54,7 @@ export const Navbar = () => {
 
       <div className="navbar-buttons animate-fade-in animate-delay">
         {isLoggedIn ? (
-          <User size={24} className="user-icon" onClick={handleLogout} />
+          <User size={24} className="user-icon" onClick={handleProfileClick} />
         ) : (
           <>
             <Link to="/signin" className="btn btn-outline">

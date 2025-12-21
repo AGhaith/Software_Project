@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 import "./CategoryManagement.css";
 
 export default function CategoryManagement() {
@@ -13,7 +15,9 @@ export default function CategoryManagement() {
   ];
 
   return (
-    <div className="category-container">
+    <div className="category-management">
+      <Navbar />
+      <div className="category-container">
       <h1 className="category-title">Category Management</h1>
 
       {/* Current Categories */}
@@ -58,6 +62,8 @@ export default function CategoryManagement() {
           ))}
         </div>
       </section>
+      </div>
+      <Footer showCTA={false} />
     </div>
   );
 }
