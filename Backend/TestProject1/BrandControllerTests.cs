@@ -5,13 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Linq.Expressions;
 using Xunit;
+using FluentValidation;
+using LocalBrandFinder.Application.DTOs;
+using LocalBrandFinder.Application.Interfaces.Utilities;
 
 public class BrandControllerTests
 {
     private readonly Mock<IUnitOfWork> _uow = new();
+    private readonly Mock<IImgBBService> _imgBBService = new();
+    private readonly Mock<IValidator<EditBrandDto>> _editBrandValidator = new();
 
     private BrandController CreateController()
-        => new BrandController(_uow.Object);
+        => new BrandController(_uow.Object, _imgBBService.Object, _editBrandValidator.Object);
 
     // ---------- ADD CATEGORY ----------
 
