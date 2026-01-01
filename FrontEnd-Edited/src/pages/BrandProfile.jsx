@@ -1,70 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import axios from "axios";
 import "./BrandProfile.css";
 
 export default function BrandProfile() {
   const navigate = useNavigate();
-  const [logo, setLogo] = useState("");
-  const [logoFile, setLogoFile] = useState(null);
+  const [logo, setLogo] = useState("https://c.animaapp.com/mjca9475OOuFH8/img/unsplash-mrvp1c59wko.png");
   const [brandName, setBrandName] = useState("");
   const [email, setEmail] = useState("");
-  const [brandId, setBrandId] = useState("");
   const [description, setDescription] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [website, setWebsite] = useState("");
   const [categories, setCategories] = useState("");
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchBrandProfile = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        navigate('/signin');
-        return;
-      }
-
-      try {
-        const response = await axios.get('http://localhost:5033/api/Brand/profile', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-
-        const data = response.data;
-        setBrandId(data.id || "");
-        setBrandName(data.name || "");
-        setEmail(data.email || "");
-        setLogo(data.logoUrl || "https://c.animaapp.com/mjca9475OOuFH8/img/unsplash-mrvp1c59wko.png");
-        setDescription(data.description || "");
-        setPhone(data.phoneNumber || "");
-        setAddress(data.address || "");
-        setWebsite(data.websiteUrl || "");
-        setCategories(data.categories ? data.categories.join(", ") : "");
-      } catch (error) {
-        console.error('Error fetching brand profile:', error);
-        alert('Failed to load profile data');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBrandProfile();
-  }, [navigate]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    navigate('/');
-  };
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setLogoFile(file);
       const url = URL.createObjectURL(file);
       setLogo(url);
     }
@@ -74,49 +27,19 @@ export default function BrandProfile() {
     setLogo("https://c.animaapp.com/mjca9475OOuFH8/img/unsplash-mrvp1c59wko.png");
   };
 
-  const handleApplyChanges = async () => {
-    const token = localStorage.getItem('token');
-    if (!token || !brandId) return;
-
-    try {
-      const formData = new FormData();
-      formData.append('Description', description);
-      formData.append('WebsiteUrl', website);
-      formData.append('PhoneNumber', phone);
-      formData.append('Address', address);
-      formData.append('Tags', categories);
-
-      if (logoFile) {
-        formData.append('Logo', logoFile);
-      }
-
-      const response = await axios.patch(`http://localhost:5033/api/Brand/edit/${brandId}`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-
-      alert('Changes applied successfully!');
-    } catch (error) {
-      console.error('Error applying changes:', error);
-      alert('Failed to apply changes');
-    }
+  const handleApplyChanges = () => {
+    // Local state changes only
+    alert('Changes would be saved here in a real application');
   };
 
-  if (loading) {
-    return (
-      <div className="brand-profile">
-        <Navbar />
-        <div className="profile-container">
-          <div className="profile-content">
-            <p>Loading profile...</p>
-          </div>
-        </div>
-        <Footer showCTA={false} />
-      </div>
-    );
-  }
+  const handleLogout = () => {
+    // Clear any user data from localStorage
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    
+    // Redirect to home page
+    navigate('/');
+  };
 
   return (
     <div className="brand-profile">
@@ -191,10 +114,10 @@ export default function BrandProfile() {
               <div className="section-fields">
                 <div className="profile-field">
                   <label>Email</label>
-                  <input 
+                  <input
                     type="email" 
                     value={email}
-                    readOnly
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="brand@email.com" 
                   />
                 </div>

@@ -189,34 +189,8 @@ const CustProfile = () => {
         </header>
 
         <div className="profile-content">
-          <div className="profile-left">
-            <div className="profile-update-card">
-              <p className="profile-update-text">
-                Please, update your information carefully
-              </p>
-              <button 
-                className="profile-apply-btn"
-                onClick={() => alert("Changes saved successfully!")}
-              >
-                Apply Changes
-              </button>
-            </div>
 
-            <div className="profile-joined">
-              <div className="profile-joined-label">Joined since</div>
-              <div className="profile-joined-date">15 April, 2020</div>
-            </div>
-
-            <button onClick={handleLogout} className="profile-logout-btn">
-              <span className="profile-logout-text">Log Out</span>
-              <img
-                className="profile-logout-icon"
-                alt="Logout"
-                src="https://c.animaapp.com/mjca9475OOuFH8/img/ant-design-logout-outlined.svg"
-              />
-            </button>
-          </div>
-
+          {/* Main Content */}
           <div className="profile-right">
             <div className="profile-details">
               <h2 className="profile-title">Personal Information</h2>
@@ -276,6 +250,35 @@ const CustProfile = () => {
                     placeholder="Enter your phone number"
                     onSave={(value) => handleUpdateField('phone', value)}
                   />
+                </div>
+
+                {/* Left Sidebar */}
+                <div className="profile-left">
+                  <div className="profile-update-card">
+                    <p className="profile-update-text">
+                      Please, update your information carefully
+                    </p>
+                    <button 
+                      className="profile-apply-btn"
+                      onClick={() => alert("Changes saved successfully!")}
+                    >
+                      Apply Changes
+                    </button>
+                  </div>
+                  
+                  <div className="profile-joined">
+                    <div className="profile-joined-label">Joined since</div>
+                    <div className="profile-joined-date">15 April, 2020</div>
+                  </div>
+                  
+                  <button onClick={handleLogout} className="profile-logout-btn">
+                    <span className="profile-logout-text">Log Out</span>
+                    <img
+                      className="profile-logout-icon"
+                      alt="Logout"
+                      src="https://c.animaapp.com/mjca9475OOuFH8/img/ant-design-logout-outlined.svg"
+                    />
+                  </button>
                 </div>
               </div>
             </div>

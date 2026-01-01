@@ -1,6 +1,5 @@
 .brand-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -47,13 +46,7 @@
 }
 
 /* Controls */
-.brand-controls {
-  background: white;
-  padding: 20px 40px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  display: flex;
-  justify-content: center;
-}
+
 
 .categories-wrapper {
   position: relative;
@@ -210,26 +203,35 @@
 
 .brand-logo-container {
   flex-shrink: 0;
+  width: 75px; /* Fixed width for circle */
+  height: 75px; /* Fixed height for circle */
+  border-radius: 50%; /* Make container circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensures logo stays within circle */
+  border: 2px solid #f0f0f0; /* Optional border */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Optional shadow */
 }
 
 .brand-logo {
   width: 70px;
   height: 70px;
-  border-radius: 16px;
+  border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #f0f0f0;
   transition: all 0.3s ease;
 }
 
 .brand-card:hover .brand-logo {
   border-color: #ff8c00;
-  transform: scale(1.05);
 }
 
+/* Update placeholder to match */
 .brand-logo-placeholder {
-  width: 70px;
-  height: 70px;
-  border-radius: 16px;
+  width: 100%; /* Fill container */
+  height: 100%;
+  border-radius: 50%; /* Ensure it's circular */
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
@@ -238,6 +240,12 @@
   font-weight: 700;
   color: white;
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+/* Add hover effect to container */
+.brand-card:hover .brand-logo-container {
+  border-color: #ff8c00;
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.2);
 }
 
 .brand-basic-info {
