@@ -22,7 +22,7 @@ export const Home = () => {
         <FeaturedBrands />
         <CategoryList />
       </div>
-      <Footer />
+      <Footer showCTA={true} />
     </div>
   );
 };

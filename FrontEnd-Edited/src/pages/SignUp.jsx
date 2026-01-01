@@ -11,7 +11,8 @@ export const SignUp = () => {
     Email: '',
     PhoneNumber: '',
     Password: '',
-    ConfirmPassword: ''
+    ConfirmPassword: '',
+    ProfilePicture: null
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -24,54 +25,65 @@ export const SignUp = () => {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData(prev => ({
+      ...prev,
+      ProfilePicture: file
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted!'); 
     setError('');
     
-    // Basic validation
+    // Basic validation (unchanged)
     if (formData.Password !== formData.ConfirmPassword) {
       setError('Passwords do not match');
-      console.log('Password mismatch');
       return;
     }
-
     if (formData.Password.length < 6) {
       setError('Password must be at least 6 characters long');
-      console.log('Password too short');
       return;
     }
-
-    console.log('About to make API call with data:', formData);
 
     try {
       setIsLoading(true);
-      const response = await axios.post('http://localhost:5033/api/Auth/customer/register', {
-        name: formData.Name,
-        email: formData.Email,
-        password: formData.Password,
-        confirmPassword: formData.ConfirmPassword,
-        phoneNumber: formData.PhoneNumber,
-        address: formData.Address
+      const formDataToSend = new FormData();
+      formDataToSend.append('Name', formData.Name);
+      formDataToSend.append('Email', formData.Email);
+      formDataToSend.append('Password', formData.Password);
+      formDataToSend.append('ConfirmPassword', formData.ConfirmPassword);
+      formDataToSend.append('PhoneNumber', formData.PhoneNumber);
+      formDataToSend.append('Address', formData.Address);
+      if (formData.ProfilePicture) {
+        formDataToSend.append('ProfilePicture', formData.ProfilePicture);
+      }
+
+      const response = await axios.post('http://localhost:5033/api/Auth/customer/register', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
-      console.log('Response received:', response);
-      console.log('Response status:', response.status);
-      
       console.log('Registration response:', response.data);
-      // Save token to local storage
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('role', 'Customer'); // Set role for customer
       }
-      
       alert('Registration successful! Please login.');
-
-      // Redirect to home or dashboard
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.title || 'Registration failed. Please try again.');
+      // Improved error handling: display specific backend errors
+      const errorData = err.response?.data;
+      if (Array.isArray(errorData)) {
+        setError(errorData.join(', ')); // Join validation errors
+      } else if (errorData?.title) {
+        setError(errorData.title);
+      } else {
+        setError('Registration failed. Please try again.');
+      }
       console.error('Registration error:', err);
-      console.log('Response data:', err.response?.data);
     } finally {
       setIsLoading(false);
     }
@@ -195,6 +207,20 @@ export const SignUp = () => {
             onChange={handleChange}
             className="form-input"
             required
+          />
+        </div>
+
+        {/* Profile Picture */}
+        <div className="form-group">
+          <label className="form-label">
+            Profile Picture
+          </label>
+          <input
+            type="file"
+            name="ProfilePicture"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="form-input"
           />
         </div>
 

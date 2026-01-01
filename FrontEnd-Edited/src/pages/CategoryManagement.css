@@ -5,9 +5,11 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
 .category-title {
+  margin-top: 50px;
   font-size: 32px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: #222;
 }
 
